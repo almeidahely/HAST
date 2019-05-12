@@ -9,5 +9,8 @@
         <module name="proyectoOracle" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="proyectoOracle" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
