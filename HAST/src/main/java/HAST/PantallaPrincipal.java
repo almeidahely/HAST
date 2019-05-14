@@ -5,6 +5,7 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +48,7 @@ aceptarButton.addActionListener(new ActionListener() {
         frame.setVisible(true);
 
 
-
+        Connection con = BD.conexion();
 
 }}
 
