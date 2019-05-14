@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Conexion {
+public class BD {
 
     public static Connection conexion() {
 
@@ -21,7 +21,7 @@ public class Conexion {
             System.out.println("INFO: Conexión abierta");
 
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         System.out.println("------------------------------------------------");
