@@ -1,16 +1,28 @@
 package HAST;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BD {
+
+    public static Connection getConn() {
+        if(conn == null) {
+            conexion();
+        }
+
+        return conn;
+    }
+
+    private static Connection conn;
 
     public static Connection conexion() {
 
         // Conectar a la base de datos
         System.out.println("--- Conexión a Oracle --------------------------");
 
-        Connection conn = null;
+         conn = null;
         try {
             // Cargar el driver Oracle JDBC Thin (ojdbc7.jar)
             // REF: Descarga: http://www.oracle.com/technetwork/database/features/jdbc/default-2280470.html
@@ -28,5 +40,6 @@ public class BD {
 
         return conn;
     }
+
 
 }

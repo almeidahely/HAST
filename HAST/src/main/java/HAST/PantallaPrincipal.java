@@ -28,14 +28,22 @@ public class PantallaPrincipal {
 
     public PantallaPrincipal() {
 
+
 aceptarButton.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("Calendario");
-        frame.setContentPane(new Calendario().getCalendario());
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        int codigo = Integer.parseInt(textField1.getText());
+
+        if(AcionesBD.ComprobarContraseña(codigo,String.valueOf(passwordField1.getPassword()))){
+            JFrame frame = new JFrame("Calendario");
+            frame.setContentPane(new Calendario().getCalendario());
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);}
+        else{
+            System.out.println("fallo");
+        }
+
     }
 });
     }
