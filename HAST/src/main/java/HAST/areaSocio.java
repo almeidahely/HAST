@@ -11,6 +11,7 @@ public class areaSocio {
     private JButton actividadesButton;
     private JButton datosPersonalesButton;
     private JPanel Panel;
+    private JLabel usuarioEntrada;
 
     public areaSocio() {
         datosPersonalesButton.addActionListener(new ActionListener() {
@@ -53,7 +54,9 @@ public class areaSocio {
                 frame.setVisible(true);
             }
         });
+        usuarioEntrada.setText("Bienvenido" + " aqui insertamos nombre en la misma variable porque hay un margen cabron");
     }
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Área de socio");
