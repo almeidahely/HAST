@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PantallaAdministrador {
-    private JPanel panel;
+    public JPanel panel;
     private JButton buttonActividades;
     private JButton buttonJunta;
     private JButton buttonCuotas;
