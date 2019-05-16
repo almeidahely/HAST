@@ -28,7 +28,7 @@ public class PantallaPrincipal {
 
     public PantallaPrincipal() {
 
-<<<<<<< HEAD
+
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,7 +39,7 @@ public class PantallaPrincipal {
                 frame.setVisible(true);
             }
         });
-=======
+
 AcionesBD.SeleccionarMayoresDe18();
 listaMayoresEdad.addItem(AcionesBD.listaSocioMayorDeEdad);
 aceptarButton.addActionListener(new ActionListener() {
@@ -76,10 +76,10 @@ aceptarButton.addActionListener(new ActionListener() {
 });
 
 
->>>>>>> master
+
     }
 
-/*    public static void main(String[] args) {
+   public static void main(String[] args) {
         JFrame frame = new JFrame("PantallaPrincipal");
         frame.setContentPane(new PantallaPrincipal().Principal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,7 +89,7 @@ aceptarButton.addActionListener(new ActionListener() {
 
         Connection con = BD.conexion();
 
-    }*/
+    }
 
 
 }
