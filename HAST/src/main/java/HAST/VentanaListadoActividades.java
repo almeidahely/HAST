@@ -15,11 +15,5 @@ public class VentanaListadoActividades {
         return Principal;
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Listado de actividades");
-        frame.setContentPane(new VentanaListadoActividades().Principal);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
+
 }
