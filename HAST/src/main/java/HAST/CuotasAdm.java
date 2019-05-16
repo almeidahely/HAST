@@ -8,7 +8,7 @@ public class CuotasAdm {
     private JPanel panel;
     private JButton buttonAnadir;
     private JButton buttonEditar;
-    private JButton buttonEliminar;
+    private JButton buttonVer;
     private JButton buttonCancelar;
 
     public CuotasAdm(JFrame frame) {
@@ -27,6 +27,28 @@ public class CuotasAdm {
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
+            }
+        });
+        buttonEditar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Editar cuota");
+                frame.setContentPane(new EditarCuota(frame).getPanel());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+
+            }
+        });
+        buttonVer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Ver cuotas");
+                frame.setContentPane(new VerCuotasAdm(frame).getPanel());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+
             }
         });
     }
