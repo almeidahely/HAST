@@ -33,4 +33,8 @@ public class Socio {
     public Socio(int codigoSocio) {
         this.codigoSocio = codigoSocio;
     }
+
+    public int getCodigoSocio() {
+        return codigoSocio;
+    }
 }

@@ -13,8 +13,6 @@ public class PantallaAdministrador {
     private JButton buttonCalendario;
 
 
-
-
     public PantallaAdministrador() {
         buttonActividades.addActionListener(new ActionListener() {
             @Override
@@ -57,6 +55,12 @@ public class PantallaAdministrador {
         buttonCalendario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Generar calendario");
+                frame.setContentPane(new GenerarCalendarioAdm(frame).getPanel());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+
 
             }
         });
@@ -89,4 +93,8 @@ public class PantallaAdministrador {
         buttonSocios = new JButton(new ImageIcon("socios.png"));
 
     }
+
+
+    // Borrar
+
 }

@@ -19,7 +19,7 @@ public class PanelActividadesAdm {
             public void actionPerformed(ActionEvent e) {
 
                 JFrame frame = new JFrame("Editar Tipo actividad");
-                frame.setContentPane(new PanelEditarTipoActividad().getPanel());
+                frame.setContentPane(new PanelEditarTipoActividad(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

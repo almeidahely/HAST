@@ -38,7 +38,7 @@
               <text value="Editar"/>
             </properties>
           </component>
-          <component id="95106" class="javax.swing.JButton" binding="buttonEliminar">
+          <component id="95106" class="javax.swing.JButton" binding="buttonVer">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
@@ -46,7 +46,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="Elimiar"/>
+              <text value="Ver"/>
             </properties>
           </component>
           <component id="565b4" class="javax.swing.JButton" binding="buttonCancelar">
