@@ -20,6 +20,7 @@ public class AnadirCuotaAdm {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                frame.dispose();
             }
         });
 

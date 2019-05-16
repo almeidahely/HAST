@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 public class PantallaPrincipal {
 
 
-
     private JPanel Principal;
     private JPasswordField passwordField1;
     private JTextField textField1;
@@ -28,19 +27,19 @@ public class PantallaPrincipal {
 
     public PantallaPrincipal() {
 
-aceptarButton.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame("Calendario");
-        frame.setContentPane(new Calendario().getCalendario());
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
-});
+        aceptarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Calendario");
+                frame.setContentPane(new Calendario().getCalendario());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         JFrame frame = new JFrame("PantallaPrincipal");
         frame.setContentPane(new PantallaPrincipal().Principal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,5 +49,8 @@ aceptarButton.addActionListener(new ActionListener() {
 
         Connection con = BD.conexion();
 
-}}
+    }*/
+
+
+}
 

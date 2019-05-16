@@ -22,8 +22,8 @@
             </constraints>
             <properties>
               <model>
-                <item value="Niños mayores de 5 años"/>
-                <item value="Adultos hasta 55 años"/>
+                <item value="Niños"/>
+                <item value="Adultos"/>
                 <item value="Mayores"/>
               </model>
             </properties>
