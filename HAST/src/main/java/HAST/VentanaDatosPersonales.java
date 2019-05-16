@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaDatosPersonales {
-    private JPanel Principal;
+    public JPanel Principal;
     private JPanel SegundoPanel;
     private JPanel panelIzquierdoSuperior;
     private JPanel PanelDerechoSuperior;

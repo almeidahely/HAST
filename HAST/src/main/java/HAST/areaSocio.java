@@ -23,7 +23,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Socio");
-                frame.setContentPane(new Calendario().getPanelCalendario());
+                frame.setContentPane(new VentanaDatosPersonales().Principal);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -33,7 +33,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Listado de actividades");
-                frame.setContentPane(new Calendario().getPanelCalendario());
+                frame.setContentPane(new PanelEditarTipoActividad().panel);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -53,12 +53,20 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("La junta");
-                frame.setContentPane(new Calendario().getPanelCalendario());
+                frame.setContentPane(new JuntaSocio().panel1);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
         });
         usuarioEntrada.setText("Bienvenido" + " aqui insertamos nombre en la misma variable porque hay un margen cabron");
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("JuntaSocio");
+        frame.setContentPane(new areaSocio().socioPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 }
