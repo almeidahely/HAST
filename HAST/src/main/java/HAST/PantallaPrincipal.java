@@ -28,9 +28,15 @@ public class PantallaPrincipal {
     }
 
     public PantallaPrincipal() {
-
+//Listado de socio//
 AcionesBD.SeleccionarMayoresDe18();
-listaMayoresEdad.addItem(AcionesBD.listaSocioMayorDeEdad);
+
+        for (Socio socio : AcionesBD.listaSocioMayorDeEdad) {
+            listaMayoresEdad.addItem(socio.getCodigoSocio());
+
+        }
+
+        //Listado de Socio//
 aceptarButton.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {

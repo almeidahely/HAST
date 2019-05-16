@@ -68,15 +68,17 @@ public class AcionesBD {
 
     static void SeleccionarMayoresDe18() {
         Connection conexion = BD.getConn();
+        listaSocioMayorDeEdad.clear();
 
 
         try {
             Statement mayorDe18 = conexion.createStatement();
             ResultSet mayoresDeEdad = mayorDe18.executeQuery("select codigoSocio from Socio where Sysdate-fechaNacimiento>=6574");
             while (mayoresDeEdad.next()) {
+                
+
                 Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"));
 
-                System.out.println("pausa");
 
 
                 listaSocioMayorDeEdad.add(nuevoSocio);
