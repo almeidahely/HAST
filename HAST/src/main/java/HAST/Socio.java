@@ -29,4 +29,8 @@ public class Socio {
         this.fechaBaja = fechaBaja;
         this.nombreCargo = nombreCargo;
     }
+
+    public Socio(int codigoSocio) {
+        this.codigoSocio = codigoSocio;
+    }
 }

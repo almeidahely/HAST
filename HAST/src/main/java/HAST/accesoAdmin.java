@@ -10,6 +10,10 @@ public class accesoAdmin {
     private JButton botonSocio;
     private JButton botonAdmin;
 
+    public JPanel getPanel() {
+        return panel;
+    }
+
     public accesoAdmin() {
         botonSocio.addActionListener(new ActionListener() {
             @Override
@@ -33,11 +37,5 @@ public class accesoAdmin {
         });
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Quieres acceder como");
-        frame.setContentPane(new accesoAdmin().adminPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
+   
 }

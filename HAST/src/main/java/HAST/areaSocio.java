@@ -14,6 +14,10 @@ public class areaSocio extends Container {
     private JPanel Panel;
     private JLabel usuarioEntrada;
 
+    public JPanel getSocioPanel() {
+        return socioPanel;
+    }
+
     public areaSocio() {
         datosPersonalesButton.addActionListener(new ActionListener() {
             @Override
