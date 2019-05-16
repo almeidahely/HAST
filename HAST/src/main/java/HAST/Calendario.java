@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 public class Calendario {
-    private JPanel calendario;
+    private JPanel panel;
 
     private CalendarPanel calendarioActivadades;
     private JLabel fecha;
@@ -21,8 +21,8 @@ public class Calendario {
     private JLabel dia;
 
 
-    public JPanel getCalendario() {
-        return calendario;
+    public JPanel getPanelCalendario() {
+        return panel;
     }
 
     public Calendario() {

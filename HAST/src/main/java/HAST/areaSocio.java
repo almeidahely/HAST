@@ -23,7 +23,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Socio");
-                frame.setContentPane(new Calendario().getCalendario());
+                frame.setContentPane(new Calendario().getPanelCalendario());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -33,7 +33,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Listado de actividades");
-                frame.setContentPane(new Calendario().getCalendario());
+                frame.setContentPane(new Calendario().getPanelCalendario());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -43,7 +43,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("");
-                frame.setContentPane(new Calendario().getCalendario());
+                frame.setContentPane(new Calendario().getPanelCalendario());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -53,7 +53,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("La junta");
-                frame.setContentPane(new Calendario().getCalendario());
+                frame.setContentPane(new Calendario().getPanelCalendario());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

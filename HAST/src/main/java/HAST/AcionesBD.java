@@ -70,7 +70,6 @@ public class AcionesBD {
         Connection conexion = BD.getConn();
 
 
-
         try {
             Statement mayorDe18 = conexion.createStatement();
             ResultSet mayoresDeEdad = mayorDe18.executeQuery("select codigoSocio from Socio where Sysdate-fechaNacimiento>=6574");
