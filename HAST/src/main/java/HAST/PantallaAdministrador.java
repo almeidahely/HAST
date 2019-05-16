@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PantallaAdministrador {
-    private JPanel panel;
+    public JPanel panel;
     private JButton buttonActividades;
     private JButton buttonJunta;
     private JButton buttonCuotas;
@@ -13,6 +13,13 @@ public class PantallaAdministrador {
     private JButton buttonCalendario;
 
 
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Administrador");
+        frame.setContentPane(new PantallaAdministrador().panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 
     public PantallaAdministrador() {
         buttonActividades.addActionListener(new ActionListener() {
@@ -24,17 +31,13 @@ public class PantallaAdministrador {
                 frame.pack();
                 frame.setVisible(true);
 
+
             }
 
 
         });
 
-        buttonJunta.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
         buttonCuotas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,6 +52,11 @@ public class PantallaAdministrador {
         buttonSocios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Socios");
+                frame.setContentPane(new SocioAdmin(frame).getPanel());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
 
             }
         });
@@ -70,7 +78,21 @@ public class PantallaAdministrador {
 
             }
         });
+
+
     }
 
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        buttonActividades = new JButton(new ImageIcon("actividades.png") {
+
+        });
+
+        buttonJunta = new JButton((new ImageIcon("junta.png")));
+        buttonCuotas = new JButton(new ImageIcon("cuota.png"));
+        buttonCalendario = new JButton(new ImageIcon("calendario.png"));
+        buttonSocios = new JButton(new ImageIcon("socios.png"));
+
+    }
 }
