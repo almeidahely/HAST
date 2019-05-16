@@ -1,17 +1,22 @@
 package HAST;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class areaSocio {
-    private JPanel socioPanel;
+public class areaSocio extends Container {
+    public JPanel socioPanel;
     private JButton laJuntaButton;
     private JButton verCalendarioButton;
     private JButton actividadesButton;
     private JButton datosPersonalesButton;
     private JPanel Panel;
     private JLabel usuarioEntrada;
+
+    public JPanel getSocioPanel() {
+        return socioPanel;
+    }
 
     public areaSocio() {
         datosPersonalesButton.addActionListener(new ActionListener() {

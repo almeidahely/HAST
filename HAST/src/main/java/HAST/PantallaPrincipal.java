@@ -18,6 +18,7 @@ public class PantallaPrincipal {
     private JTextField textField1;
     private JButton aceptarButton;
     private JPanel Fondo;
+    private JComboBox listaMayoresEdad;
     private JButton calendarioButton;
 
 
@@ -27,6 +28,7 @@ public class PantallaPrincipal {
 
     public PantallaPrincipal() {
 
+<<<<<<< HEAD
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,6 +39,44 @@ public class PantallaPrincipal {
                 frame.setVisible(true);
             }
         });
+=======
+AcionesBD.SeleccionarMayoresDe18();
+listaMayoresEdad.addItem(AcionesBD.listaSocioMayorDeEdad);
+aceptarButton.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int codigoUsuario = Integer.parseInt(textField1.getText());
+        int valor= AcionesBD.ComprobarContraseña(codigoUsuario,String.valueOf(passwordField1.getPassword()));
+        AcionesBD.SeleccionarMayoresDe18();
+        if(valor!=0){
+
+            if(valor==1){
+
+                JFrame frame = new JFrame("Calendario");
+                frame.setContentPane(new areaSocio().getSocioPanel());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);}
+            else{
+                JFrame frame = new JFrame("Administrador");
+                frame.setContentPane(new accesoAdmin().getPanel());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+
+
+            }
+
+        }
+        else{
+            ;
+        }
+
+    }
+});
+
+
+>>>>>>> master
     }
 
 /*    public static void main(String[] args) {
