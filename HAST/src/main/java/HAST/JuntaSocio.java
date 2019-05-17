@@ -16,13 +16,5 @@ public class JuntaSocio {
             }
         });
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("JuntaSocio");
-        frame.setContentPane(new JuntaSocio().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 }
 

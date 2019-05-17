@@ -33,13 +33,7 @@ public class VentanaDatosPersonales {
         return Principal;
     }
 
-    public VentanaDatosPersonales() {
-        cancelarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+    public VentanaDatosPersonales(JFrame frame) {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,13 +43,7 @@ public class VentanaDatosPersonales {
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        aceptarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+                frame.dispose();
             }
         });
     }

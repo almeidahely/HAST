@@ -3,7 +3,7 @@ package HAST;
 import javax.swing.*;
 
 public class VentanaListadoActividades {
-    private JPanel Principal;
+    public JPanel Principal;
     private JPanel panelDerecho;
     private JButton buttonAnterior;
     private JButton button1sig;
