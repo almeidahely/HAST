@@ -13,13 +13,13 @@ public class Socio {
     private String apellido;
     private String fechaNacimiento;
     private String email;
-    private Socio codigoResponsable;
+    private int codigoResponsable;
     private int edad;
     private String fechaAlta;
     private String fechaBaja;
     private String nombreCargo;
-    static Map<Integer,Socio> socios = new HashMap<>();
-    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, Socio codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
+
+    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
 
         this.codigoSocio = codigoSocio;
         this.DNI = DNI;
@@ -70,7 +70,7 @@ public class Socio {
         return email;
     }
 
-    public Socio getCodigoResponsable() {
+    public int getCodigoResponsable() {
         return codigoResponsable;
     }
 

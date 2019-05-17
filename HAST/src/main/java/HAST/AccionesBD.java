@@ -9,12 +9,14 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AccionesBD {
     static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
     static List<Actividad> listaActividades = new ArrayList<>();
+    static Map<Integer,Socio> socios = new HashMap<>();
 
 
     //comprobar contraseña
@@ -119,7 +121,7 @@ public class AccionesBD {
 
     static void TodosLosSocios() {
         Connection conexion = BD.getConn();
-        Socio.socios.clear();
+        socios.clear();
 
 
         try {
@@ -127,12 +129,11 @@ public class AccionesBD {
             ResultSet resultSetSocio = todoSocios.executeQuery("select * from Socio ");
             while (resultSetSocio.next()) {
 
-
                 Socio nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"),resultSetSocio.getString("DNI"),resultSetSocio.getString("telefono"),resultSetSocio.getString("nombre"),resultSetSocio.getString("apellido"),resultSetSocio.getString("fechaNacimiento"),resultSetSocio.getString("email"),resultSetSocio.getInt("codigoResponsable"),resultSetSocio.getInt("edad"),resultSetSocio.getString("fechaDeAlta"),resultSetSocio.getString("fechaDeBaja"));
 
 
 
-                Socio.socios.put(resultSetSocio.getInt("codigoSocio"),nuevoSocio);
+                socios.put(resultSetSocio.getInt("codigoSocio"),nuevoSocio);
 
 
             }
