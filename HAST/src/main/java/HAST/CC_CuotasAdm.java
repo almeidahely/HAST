@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CuotasAdm {
+public class CC_CuotasAdm {
     private JPanel panel;
     private JButton buttonAnadir;
     private JButton buttonEditar;
     private JButton buttonVer;
     private JButton buttonCancelar;
 
-    public CuotasAdm(JFrame frame) {
+    public CC_CuotasAdm(JFrame frame) {
         buttonCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -23,7 +23,7 @@ public class CuotasAdm {
             public void actionPerformed(ActionEvent e) {
 
                 JFrame frame = new JFrame("Añadir Cuota");
-                frame.setContentPane(new AnadirCuotaAdm(frame).getPanel());
+                frame.setContentPane(new CCA_AnadirCuotaAdm(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -33,7 +33,7 @@ public class CuotasAdm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Editar cuota");
-                frame.setContentPane(new EditarCuota(frame).getPanel());
+                frame.setContentPane(new CCB_EditarCuota(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -44,7 +44,7 @@ public class CuotasAdm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Ver cuotas");
-                frame.setContentPane(new VerCuotasAdm(frame).getPanel());
+                frame.setContentPane(new CCC_VerCuotasAdm(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

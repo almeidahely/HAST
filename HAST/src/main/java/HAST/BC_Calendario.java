@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
-public class Calendario {
+public class BC_Calendario {
     private JPanel panel;
 
     private CalendarPanel calendarioActivadades;
@@ -25,7 +25,7 @@ public class Calendario {
         return panel;
     }
 
-    public Calendario() {
+    public BC_Calendario() {
 
         Aceptar.addActionListener(new ActionListener() {
             @Override

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class areaSocio extends Container {
+public class B_areaSocio extends Container {
     public JPanel socioPanel;
     private JButton laJuntaButton;
     private JButton verCalendarioButton;
@@ -18,7 +18,7 @@ public class areaSocio extends Container {
         return socioPanel;
     }
     String nombreUsuario,apellidoUsuario;
-    public areaSocio() {
+    public B_areaSocio() {
 
         for (Socio socio : AccionesBD.listaSocios) {
             if( socio.getCodigoSocio()==A_PantallaPrincipal.socioUsuario){
@@ -31,7 +31,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Socio");
-                frame.setContentPane(new VentanaDatosPersonales().Principal);
+                frame.setContentPane(new BA_VentanaDatosPersonales().Principal);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -41,7 +41,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Listado de actividades");
-                frame.setContentPane(new PanelEditarTipoActividad(frame).panel);
+                frame.setContentPane(new CAA_PanelEditarTipoActividad(frame).panel);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -51,7 +51,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("");
-                frame.setContentPane(new Calendario().getPanelCalendario());
+                frame.setContentPane(new BC_Calendario().getPanelCalendario());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -61,7 +61,7 @@ public class areaSocio extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("La junta");
-                frame.setContentPane(new JuntaSocio().panel1);
+                frame.setContentPane(new BD_JuntaSocio().panel1);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

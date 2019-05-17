@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PantallaAdministrador {
+public class C_PantallaAdministrador {
     public JPanel panel;
     private JButton buttonActividades;
     private JButton buttonJunta;
@@ -13,12 +13,12 @@ public class PantallaAdministrador {
     private JButton buttonCalendario;
 
 
-    public PantallaAdministrador() {
+    public C_PantallaAdministrador() {
         buttonActividades.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Actividades");
-                frame.setContentPane(new PanelActividadesAdm(frame).getPanel());
+                frame.setContentPane(new CA_PanelActividadesAdm(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -35,7 +35,7 @@ public class PantallaAdministrador {
             public void actionPerformed(ActionEvent e) {
 
                 JFrame frame = new JFrame("Editar Cuotas");
-                frame.setContentPane(new CuotasAdm(frame).getPanel());
+                frame.setContentPane(new CC_CuotasAdm(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -45,7 +45,7 @@ public class PantallaAdministrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Socios");
-                frame.setContentPane(new SocioAdmin(frame).getPanel());
+                frame.setContentPane(new CD_SocioAdmin(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -56,7 +56,7 @@ public class PantallaAdministrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Generar calendario");
-                frame.setContentPane(new GenerarCalendarioAdm(frame).getPanel());
+                frame.setContentPane(new CE_GenerarCalendarioAdm(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -69,7 +69,7 @@ public class PantallaAdministrador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Editar Junta");
-                frame.setContentPane(new JuntaAdm(frame).getPanel());
+                frame.setContentPane(new CB_JuntaAdm(frame).getPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
