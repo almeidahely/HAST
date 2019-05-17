@@ -20,12 +20,7 @@ public class B_areaSocio extends Container {
     String nombreUsuario,apellidoUsuario;
     public B_areaSocio() {
 
-        for (Socio socio : AccionesBD.listaSocios) {
-            if( socio.getCodigoSocio()==A_PantallaPrincipal.socioUsuario){
-                nombreUsuario=socio.getNombre();
-                apellidoUsuario=socio.getApellido();
-            }
-        }
+
         usuarioEntrada.setText("Vienvenid@ "+nombreUsuario+" "+ apellidoUsuario);
         datosPersonalesButton.addActionListener(new ActionListener() {
             @Override
