@@ -26,10 +26,6 @@ public class CAA_PanelEditarTipoActividad {
         });
     }
 
-    public PanelEditarTipoActividad() {
-
-    }
-
     public JPanel getPanel() {
         return panel;
     }
