@@ -118,7 +118,7 @@
               <component id="6cb9" class="javax.swing.JButton" binding="buttonAnadir">
                 <constraints/>
                 <properties>
-                  <text value="Button"/>
+                  <text value="Añadir"/>
                 </properties>
               </component>
             </children>
