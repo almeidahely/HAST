@@ -10,11 +10,11 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AccionesBD {
     static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
     static List<Actividad> listaActividades = new ArrayList<>();
-    static List<Socio> listaSocios = new ArrayList<>();
 
 
     //comprobar contraseña
@@ -119,20 +119,20 @@ public class AccionesBD {
 
     static void TodosLosSocios() {
         Connection conexion = BD.getConn();
-        listaSocios.clear();
+        Socio.socios.clear();
 
 
         try {
             Statement todoSocios = conexion.createStatement();
-            ResultSet socios = todoSocios.executeQuery("select * from Socio ");
-            while (socios.next()) {
+            ResultSet resultSetSocio = todoSocios.executeQuery("select * from Socio ");
+            while (resultSetSocio.next()) {
 
 
-                Socio nuevoSocio = new Socio(socios.getInt("codigoSocio"),socios.getString("DNI"),socios.getString("telefono"),socios.getString("nombre"),socios.getString("apellido"),socios.getString("fechaNacimiento"),socios.getString("email"),socios.getInt("codigoResponsable"),socios.getInt("edad"),socios.getString("fechaDeAlta"),socios.getString("fechaDeBaja"));
+                Socio nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"),resultSetSocio.getString("DNI"),resultSetSocio.getString("telefono"),resultSetSocio.getString("nombre"),resultSetSocio.getString("apellido"),resultSetSocio.getString("fechaNacimiento"),resultSetSocio.getString("email"),resultSetSocio.getInt("codigoResponsable"),resultSetSocio.getInt("edad"),resultSetSocio.getString("fechaDeAlta"),resultSetSocio.getString("fechaDeBaja"));
 
 
 
-                listaSocios.add(nuevoSocio);
+                Socio.socios.put(resultSetSocio.getInt("codigoSocio"),nuevoSocio);
 
 
             }

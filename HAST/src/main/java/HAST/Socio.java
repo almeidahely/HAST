@@ -1,5 +1,9 @@
 package HAST;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Socio {
 
     private int codigoSocio;
@@ -9,13 +13,14 @@ public class Socio {
     private String apellido;
     private String fechaNacimiento;
     private String email;
-    private int codigoResponsable;
+    private Socio codigoResponsable;
     private int edad;
     private String fechaAlta;
     private String fechaBaja;
     private String nombreCargo;
+    static Map<Integer,Socio> socios = new HashMap<>();
+    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, Socio codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
 
-    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
         this.codigoSocio = codigoSocio;
         this.DNI = DNI;
         this.telefono = telefono;
@@ -65,7 +70,7 @@ public class Socio {
         return email;
     }
 
-    public int getCodigoResponsable() {
+    public Socio getCodigoResponsable() {
         return codigoResponsable;
     }
 
