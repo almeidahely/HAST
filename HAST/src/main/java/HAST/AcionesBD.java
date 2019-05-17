@@ -1,13 +1,8 @@
 package HAST;
 
-import com.github.lgooddatepicker.components.CalendarPanel;
+import oracle.jdbc.OracleTypes;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,10 +70,9 @@ public class AcionesBD {
             Statement mayorDe18 = conexion.createStatement();
             ResultSet mayoresDeEdad = mayorDe18.executeQuery("select codigoSocio from Socio where Sysdate-fechaNacimiento>=6574");
             while (mayoresDeEdad.next()) {
-                
+
 
                 Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"));
-
 
 
                 listaSocioMayorDeEdad.add(nuevoSocio);
@@ -91,6 +85,32 @@ public class AcionesBD {
             e.printStackTrace();
         }
 
+    }
+
+
+
+
+    static boolean BorrarSocio(int codigoSocio) {
+        boolean resultBorrado = false;
+        Connection conexion = BD.getConn();
+
+        try {
+            String sql = "Delete from Socio where codigoSocio = " + codigoSocio;
+            Statement borrar = conexion.createStatement();
+
+            int valor = borrar.executeUpdate(sql);
+            if (valor>1){
+                resultBorrado=true;
+            }
+            conexion.close();//ceramos
+            borrar.close();
+
+        } catch (SQLException e) {
+            //Imprime el mensaje de la exception lanzada en pl/sql si el valor es diferente de 1
+            e.printStackTrace();
+        }
+
+return resultBorrado;
     }
 
 

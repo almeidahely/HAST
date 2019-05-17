@@ -52,8 +52,9 @@ public class areaSocio extends Container {
         laJuntaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Junta.MostrarJunta();
                 JFrame frame = new JFrame("La junta");
-                frame.setContentPane(new JuntaSocio().panel1);
+                frame.setContentPane(new JuntaSocio().Principal);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

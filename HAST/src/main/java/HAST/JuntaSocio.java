@@ -5,7 +5,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 public class JuntaSocio {
-    public JPanel panel1;
+    public JPanel Principal;
     private JTable table1;
 
     public JuntaSocio() {
@@ -19,7 +19,7 @@ public class JuntaSocio {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("JuntaSocio");
-        frame.setContentPane(new JuntaSocio().panel1);
+        frame.setContentPane(new JuntaSocio().Principal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

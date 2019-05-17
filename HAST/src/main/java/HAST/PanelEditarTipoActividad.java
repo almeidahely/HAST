@@ -26,6 +26,10 @@ public class PanelEditarTipoActividad {
         });
     }
 
+    public PanelEditarTipoActividad() {
+
+    }
+
     public JPanel getPanel() {
         return panel;
     }
