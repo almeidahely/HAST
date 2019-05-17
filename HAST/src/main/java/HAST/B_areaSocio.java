@@ -20,13 +20,18 @@ public class B_areaSocio extends Container {
     String nombreUsuario,apellidoUsuario;
     public B_areaSocio() {
 
-
+        for (Socio socio : AccionesBD.listaSocios) {
+            if( socio.getCodigoSocio()==A_PantallaPrincipal.socioUsuario){
+                nombreUsuario=socio.getNombre();
+                apellidoUsuario=socio.getApellido();
+            }
+        }
         usuarioEntrada.setText("Vienvenid@ "+nombreUsuario+" "+ apellidoUsuario);
         datosPersonalesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Socio");
-                frame.setContentPane(new BA_VentanaDatosPersonales().Principal);
+                frame.setContentPane(new BA_VentanaDatosPersonales(frame).Principal);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

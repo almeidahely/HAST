@@ -33,29 +33,19 @@ public class BA_VentanaDatosPersonales {
         return Principal;
     }
 
-    public BA_VentanaDatosPersonales() {
-        cancelarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    public BA_VentanaDatosPersonales(JFrame frame) {
 
-            }
-        });
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
+
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        aceptarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+                frame.dispose();
             }
         });
     }
