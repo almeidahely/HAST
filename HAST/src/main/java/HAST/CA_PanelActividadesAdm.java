@@ -51,4 +51,13 @@ public class CA_PanelActividadesAdm {
     public JPanel getPanel() {
         return panel;
     }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        añadirButton = new JButton((new ImageIcon("plus.png")));
+        editarButton = new JButton((new ImageIcon("edit.png")));
+        eliminarButton = new JButton((new ImageIcon("remove.png")));
+        cancelarButton = new JButton((new ImageIcon("exit.png")));
+
+    }
 }

@@ -50,16 +50,22 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="5c3f9" class="javax.swing.JButton" binding="buttonCancelar">
+              <component id="5c3f9" class="javax.swing.JButton" binding="buttonCancelarTipoActividad" custom-create="true">
                 <constraints/>
                 <properties>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
                   <text value="Cancelar"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
-              <component id="a1e71" class="javax.swing.JButton" binding="guardarButton" default-binding="true">
+              <component id="a1e71" class="javax.swing.JButton" binding="guardarButtonTipoActividad" custom-create="true">
                 <constraints/>
                 <properties>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
                   <text value="Guardar"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
             </children>

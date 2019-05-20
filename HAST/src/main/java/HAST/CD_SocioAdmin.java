@@ -6,14 +6,15 @@ import java.awt.event.ActionListener;
 
 public class CD_SocioAdmin {
     private JPanel panel;
-    private JButton anadirButton;
-    private JButton editarButton;
-    private JButton cancelarButton;
+    private JButton anadirButtonSocio;
+    private JButton editarButtonSocio;
+    private JButton cancelarButtonSocio;
+    private JTextArea textSocios;
 
     public CD_SocioAdmin(JFrame frame) {
 
 
-        anadirButton.addActionListener(new ActionListener() {
+        anadirButtonSocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Socios");
@@ -24,7 +25,7 @@ public class CD_SocioAdmin {
 
             }
         });
-        editarButton.addActionListener(new ActionListener() {
+        editarButtonSocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Editar socio");
@@ -35,7 +36,7 @@ public class CD_SocioAdmin {
 
             }
         });
-        cancelarButton.addActionListener(new ActionListener() {
+        cancelarButtonSocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -49,5 +50,13 @@ public class CD_SocioAdmin {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
+        anadirButtonSocio = new JButton((new ImageIcon("plus.png")));
+        editarButtonSocio = new JButton((new ImageIcon("edit.png")));
+        cancelarButtonSocio = new JButton((new ImageIcon("exit.png")));
     }
 }

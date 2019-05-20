@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class AA_accesoAdmin {
     private JPanel panel;
     private JPanel adminPanel;
-    private JButton botonSocio;
+    private JButton botonAreaSocios;
     private JButton botonAdmin;
 
     public JPanel getPanel() {
@@ -15,11 +15,11 @@ public class AA_accesoAdmin {
     }
 
     public AA_accesoAdmin() {
-        botonSocio.addActionListener(new ActionListener() {
+        botonAreaSocios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Área de socio");
-                frame.setContentPane(new B_areaSocio().socioPanel);
+                frame.setContentPane(new B_areaSocio(frame).socioPanel);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -29,7 +29,7 @@ public class AA_accesoAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Editar");
-                frame.setContentPane(new C_PantallaAdministrador().panel);
+                frame.setContentPane(new C_PantallaAdministrador(frame).panel);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -38,5 +38,9 @@ public class AA_accesoAdmin {
     }
 
 
-   
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        botonAreaSocios = new JButton((new ImageIcon("accesoSocios.png")));
+        botonAdmin = new JButton((new ImageIcon("administrador.png")));
+    }
 }

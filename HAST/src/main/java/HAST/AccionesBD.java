@@ -1,13 +1,6 @@
 package HAST;
 
-import com.github.lgooddatepicker.components.CalendarPanel;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +9,14 @@ import java.util.Map;
 public class AccionesBD {
     static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
     static List<Actividad> listaActividades = new ArrayList<>();
-    static Map<Integer,Socio> socios = new HashMap<>();
+    static Map<Integer, Socio> socios = new HashMap<>();
+
+    static List<String> nombreUsuarioConectado = new ArrayList<>();
+
+
+    public static List<Socio> getListaSocioMayorDeEdad() {
+        return listaSocioMayorDeEdad;
+    }
 
 
     //comprobar contraseña
@@ -43,6 +43,7 @@ public class AccionesBD {
             while (resp.next()) {
                 perfil = resp.getString("perfil");
             }
+
 
             System.out.println("por aqui");
             System.out.println(perfil);
@@ -82,8 +83,7 @@ public class AccionesBD {
             while (mayoresDeEdad.next()) {
 
 
-                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("nombre"),mayoresDeEdad.getString("apellido"));
-
+                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"), mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"));
 
 
                 listaSocioMayorDeEdad.add(nuevoSocio);
@@ -98,9 +98,49 @@ public class AccionesBD {
 
     }
 
+
+
+
+    /*
+    Enseña el nombre del usuario conectado
+    @param: define el código del socio para encontrar el nombre del usuario
+     */
+
+    static void usuarioConectado(int codigoSocio) {
+        Connection conexion = BD.getConn();
+        nombreUsuarioConectado.clear();
+
+        try {
+            Statement stmt = conexion.createStatement();
+
+
+            PreparedStatement Pstmt = conexion.prepareStatement("select * from Socio where codigoSocio = ?");
+            Pstmt.setObject(1, codigoSocio);
+
+
+            ResultSet userConnected_ = Pstmt.executeQuery();
+            while (userConnected_.next()) {
+                userConnected_.getString("Nombre");
+
+                String nombres = userConnected_.getString("Nombre");
+                nombreUsuarioConectado.add(nombres);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+
+
     //Lista Actividades
 
-    static void listarActividades(){
+    static void listarActividades() {
         listaActividades.clear();
         Connection conexion = BD.getConn();
 
@@ -108,7 +148,8 @@ public class AccionesBD {
             Statement actividad = conexion.createStatement();
             ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= activo");
 
-            while(activas.next()){            Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"),activas.getString("descripcion"),activas.getDouble("precio"), activas.getInt("organizador"),activas.getString("fechaActividad"));
+            while (activas.next()) {
+                Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), activas.getInt("organizador"), activas.getString("fechaActividad"));
             }
 
 
@@ -129,11 +170,11 @@ public class AccionesBD {
             ResultSet resultSetSocio = todoSocios.executeQuery("select * from Socio ");
             while (resultSetSocio.next()) {
 
-                Socio nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"),resultSetSocio.getString("DNI"),resultSetSocio.getString("telefono"),resultSetSocio.getString("nombre"),resultSetSocio.getString("apellido"),resultSetSocio.getString("fechaNacimiento"),resultSetSocio.getString("email"),resultSetSocio.getInt("codigoResponsable"),resultSetSocio.getInt("edad"),resultSetSocio.getString("fechaDeAlta"),resultSetSocio.getString("fechaDeBaja"));
+                Socio nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), resultSetSocio.getInt("codigoResponsable"), resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
 
+                //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
 
-
-                socios.put(resultSetSocio.getInt("codigoSocio"),nuevoSocio);
+                socios.put(resultSetSocio.getInt("codigoSocio"), nuevoSocio);
 
 
             }

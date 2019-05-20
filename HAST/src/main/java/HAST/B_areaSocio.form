@@ -1,53 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="HAST.B_areaSocio">
-  <grid id="27dc6" binding="socioPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="socioPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="541" height="400"/>
+      <xy x="20" y="20" width="641" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="d205c" binding="Panel" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="d205c" binding="Panel" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="20" left="20" bottom="20" right="20"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="e4e8" class="javax.swing.JButton" binding="laJuntaButton" default-binding="true">
+          <component id="e4e8" class="javax.swing.JButton" binding="laJuntaButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <borderPainted value="false"/>
+              <font name="Avenir Next Condensed" size="18"/>
+              <horizontalTextPosition value="0"/>
               <text value="La junta"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="27848" class="javax.swing.JButton" binding="verCalendarioButton" default-binding="true">
+          <component id="27848" class="javax.swing.JButton" binding="verCalendarioButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <borderPainted value="false"/>
+              <font name="Avenir Next Condensed" size="18"/>
+              <horizontalTextPosition value="0"/>
               <text value="Ver calendario"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="f44c0" class="javax.swing.JButton" binding="actividadesButton" default-binding="true">
+          <component id="f44c0" class="javax.swing.JButton" binding="actividadesButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <borderPainted value="false"/>
+              <font name="Avenir Next Condensed" size="18"/>
+              <horizontalTextPosition value="0"/>
               <text value="Actividades"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="a1447" class="javax.swing.JButton" binding="datosPersonalesButton" default-binding="true">
+          <component id="a1447" class="javax.swing.JButton" binding="datosPersonalesButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <icon value="images/DateTimePickerIcon 16x16.png"/>
+              <borderPainted value="false"/>
+              <font name="Avenir Next Condensed" size="18"/>
+              <horizontalTextPosition value="0"/>
               <text value="Datos personales"/>
               <verticalAlignment value="0"/>
+              <verticalTextPosition value="3"/>
+            </properties>
+          </component>
+          <component id="2afb6" class="javax.swing.JButton" binding="SalirButtonSocios" custom-create="true">
+            <constraints>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <borderPainted value="false"/>
+              <font name="Avenir Next Condensed" size="18"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Salir"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
         </children>
@@ -64,6 +91,16 @@
         <properties>
           <background color="-16777216"/>
           <text value=""/>
+        </properties>
+      </component>
+      <component id="ceef4" class="javax.swing.JLabel" binding="hora">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Avenir Next" size="10" style="2"/>
+          <foreground color="-16729337"/>
+          <text value="Label"/>
         </properties>
       </component>
     </children>

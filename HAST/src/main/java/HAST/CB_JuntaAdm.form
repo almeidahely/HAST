@@ -62,48 +62,64 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="60d80" class="javax.swing.JButton" binding="buttonAnadir">
+              <component id="60d80" class="javax.swing.JButton" binding="buttonAnadirJunta" custom-create="true">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="100" height="100"/>
                     <preferred-size width="100" height="100"/>
                   </grid>
                 </constraints>
                 <properties>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
+                  <iconTextGap value="8"/>
                   <text value="Añadir"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
-              <component id="3bd08" class="javax.swing.JButton" binding="buttonEliminar">
+              <component id="3bd08" class="javax.swing.JButton" binding="buttonEliminarJunta" custom-create="true">
                 <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="100" height="100"/>
                     <preferred-size width="100" height="100"/>
                   </grid>
                 </constraints>
                 <properties>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
+                  <iconTextGap value="8"/>
                   <text value="Eliminar"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
-              <component id="4c53f" class="javax.swing.JButton" binding="buttonEditar">
+              <component id="4c53f" class="javax.swing.JButton" binding="buttonEditarJunta" custom-create="true">
                 <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="100" height="100"/>
                     <preferred-size width="100" height="100"/>
                   </grid>
                 </constraints>
                 <properties>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
+                  <iconTextGap value="8"/>
                   <text value="Editar"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
-              <component id="264db" class="javax.swing.JButton" binding="buttonCancelar">
+              <component id="264db" class="javax.swing.JButton" binding="buttonCancelarJunta" custom-create="true">
                 <constraints>
-                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="100" height="100"/>
                     <preferred-size width="100" height="100"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <text value="Cancelar"/>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
+                  <iconTextGap value="8"/>
+                  <text value="Salir"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
             </children>

@@ -67,48 +67,64 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="52f5b" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
+          <component id="aa838" class="javax.swing.JButton" binding="buttonSubirCuota" custom-create="true">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
                 <preferred-size width="100" height="100"/>
               </grid>
             </constraints>
             <properties>
-              <text value="Eliminar"/>
-            </properties>
-          </component>
-          <component id="aa838" class="javax.swing.JButton" binding="subirButton" default-binding="true">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="100" height="100"/>
-                <preferred-size width="100" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
+              <borderPainted value="false"/>
+              <horizontalTextPosition value="0"/>
+              <iconTextGap value="8"/>
               <text value="Subir"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="8626d" class="javax.swing.JButton" binding="bajarButton" default-binding="true">
+          <component id="8626d" class="javax.swing.JButton" binding="buttonBajarCuota" custom-create="true">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
                 <preferred-size width="100" height="100"/>
               </grid>
             </constraints>
             <properties>
+              <borderPainted value="false"/>
+              <horizontalTextPosition value="0"/>
+              <iconTextGap value="8"/>
               <text value="Bajar"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="7561a" class="javax.swing.JButton" binding="cancelarButton" default-binding="true">
+          <component id="52f5b" class="javax.swing.JButton" binding="buttonEliminarCuotaAdm" custom-create="true">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
                 <preferred-size width="100" height="100"/>
               </grid>
             </constraints>
             <properties>
+              <borderPainted value="false"/>
+              <horizontalTextPosition value="0"/>
+              <iconTextGap value="8"/>
+              <text value="Eliminar"/>
+              <verticalTextPosition value="3"/>
+            </properties>
+          </component>
+          <component id="7561a" class="javax.swing.JButton" binding="buttonCancelarCuotaAdm" custom-create="true">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="100" height="100"/>
+                <preferred-size width="100" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <borderPainted value="false"/>
+              <horizontalTextPosition value="0"/>
+              <iconTextGap value="8"/>
               <text value="Cancelar"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
         </children>

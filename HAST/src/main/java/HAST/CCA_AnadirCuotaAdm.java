@@ -8,15 +8,15 @@ public class CCA_AnadirCuotaAdm {
     private JPanel panel;
     private JComboBox selectorEdad;
     private JTextField textPrecio;
-    private JButton guardarButton;
-    private JButton cancelarButton;
+    private JButton ButtonGuardarCuotaAdm;
+    private JButton buttonCancelarCuotaAdm;
 
     public JPanel getPanel() {
         return panel;
     }
 
     public CCA_AnadirCuotaAdm(JFrame frame) {
-        cancelarButton.addActionListener(new ActionListener() {
+        buttonCancelarCuotaAdm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -25,11 +25,21 @@ public class CCA_AnadirCuotaAdm {
         });
 
 
-        guardarButton.addActionListener(new ActionListener() {
+        ButtonGuardarCuotaAdm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
             }
         });
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        buttonCancelarCuotaAdm = new JButton((new ImageIcon("cancel2.png")));
+        ButtonGuardarCuotaAdm = new JButton((new ImageIcon("save.png")));
+
+
+
+
     }
 }

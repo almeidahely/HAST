@@ -8,19 +8,23 @@ public class Actividad {
     private String descripcion;
     private double precio;
     private int organizador;
+    private String dificultad;
+    private String tipo;
     List<Socio> participantes =new ArrayList<>();
     private String fechaActividad;
 
 
-
-    public Actividad(int codigoActividad, String descripcion, double precio, int organizador,String fechaActividad) {
+    public Actividad(int codigoActividad, String descripcion, double precio, int organizador, String dificultad, String tipo, String fechaActividad) {
         this.codigoActividad = codigoActividad;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.organizador=organizador;
+        this.organizador = organizador;
+        this.dificultad = dificultad;
+        this.tipo = tipo;
         this.fechaActividad = fechaActividad;
-
     }
+
+
 
     public int getCodigoActividad() {
         return codigoActividad;

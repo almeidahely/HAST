@@ -16,8 +16,8 @@ public class BA_VentanaDatosPersonales {
     private JTextField textField3;
     private JTextField textField4;
     private JButton imagenButton;
-    private JButton cancelarButton;
-    private JButton aceptarButton;
+    private JButton cancelarButtonDatos;
+    private JButton aceptarButtonDatos;
     private JLabel nombreLabel;
     private JLabel telefonoLabel;
     private JLabel emailLabel;
@@ -35,14 +35,14 @@ public class BA_VentanaDatosPersonales {
 
     public BA_VentanaDatosPersonales(JFrame frame) {
 
-        aceptarButton.addActionListener(new ActionListener() {
+        aceptarButtonDatos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
 
-        cancelarButton.addActionListener(new ActionListener() {
+        cancelarButtonDatos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -55,8 +55,13 @@ public class BA_VentanaDatosPersonales {
     }
 
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        imagenButton = new JButton((new ImageIcon("avatar.png")));
+        aceptarButtonDatos = new JButton(new ImageIcon("save.png"));
+        cancelarButtonDatos = new JButton(new ImageIcon("cancel2.png"));
 
 
-
+    }
 }
 
