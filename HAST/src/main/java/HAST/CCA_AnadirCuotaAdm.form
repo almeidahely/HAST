@@ -45,16 +45,24 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="64b28" class="javax.swing.JButton" binding="cancelarButton">
+              <component id="64b28" class="javax.swing.JButton" binding="buttonCancelarCuotaAdm" custom-create="true">
                 <constraints/>
                 <properties>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
+                  <iconTextGap value="8"/>
                   <text value="Cancelar"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
-              <component id="c61b1" class="javax.swing.JButton" binding="guardarButton" default-binding="true">
+              <component id="c61b1" class="javax.swing.JButton" binding="ButtonGuardarCuotaAdm" custom-create="true">
                 <constraints/>
                 <properties>
+                  <borderPainted value="false"/>
+                  <horizontalTextPosition value="0"/>
+                  <iconTextGap value="8"/>
                   <text value="Guardar"/>
+                  <verticalTextPosition value="3"/>
                 </properties>
               </component>
             </children>

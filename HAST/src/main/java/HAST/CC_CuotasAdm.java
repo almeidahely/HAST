@@ -6,19 +6,19 @@ import java.awt.event.ActionListener;
 
 public class CC_CuotasAdm {
     private JPanel panel;
-    private JButton buttonAnadir;
-    private JButton buttonEditar;
-    private JButton buttonVer;
-    private JButton buttonCancelar;
+    private JButton buttonAnadirCuota;
+    private JButton buttonEditarCuota;
+    private JButton buttonVerCuota;
+    private JButton buttonCancelarCuota;
 
     public CC_CuotasAdm(JFrame frame) {
-        buttonCancelar.addActionListener(new ActionListener() {
+        buttonCancelarCuota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
             }
         });
-        buttonAnadir.addActionListener(new ActionListener() {
+        buttonAnadirCuota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -29,7 +29,7 @@ public class CC_CuotasAdm {
                 frame.setVisible(true);
             }
         });
-        buttonEditar.addActionListener(new ActionListener() {
+        buttonEditarCuota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Editar cuota");
@@ -40,7 +40,7 @@ public class CC_CuotasAdm {
 
             }
         });
-        buttonVer.addActionListener(new ActionListener() {
+        buttonVerCuota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Ver cuotas");
@@ -55,5 +55,15 @@ public class CC_CuotasAdm {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
+        buttonAnadirCuota = new JButton((new ImageIcon("plus.png")));
+        buttonEditarCuota = new JButton((new ImageIcon("edit.png")));
+        buttonVerCuota = new JButton((new ImageIcon("eye.png")));
+        buttonCancelarCuota = new JButton((new ImageIcon("exit.png")));
     }
 }

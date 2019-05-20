@@ -8,13 +8,13 @@ public class CCB_EditarCuota {
     private JPanel panel;
     private JComboBox selectorCuota;
     private JComboBox selectorPorcentaje;
-    private JButton eliminarButton;
-    private JButton subirButton;
-    private JButton bajarButton;
-    private JButton cancelarButton;
+    private JButton buttonEliminarCuotaAdm;
+    private JButton buttonSubirCuota;
+    private JButton buttonBajarCuota;
+    private JButton buttonCancelarCuotaAdm;
 
     public CCB_EditarCuota(JFrame frame) {
-        cancelarButton.addActionListener(new ActionListener() {
+        buttonCancelarCuotaAdm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -24,5 +24,15 @@ public class CCB_EditarCuota {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
+        buttonBajarCuota = new JButton((new ImageIcon("minus.png")));
+        buttonSubirCuota = new JButton((new ImageIcon("plus.png")));
+        buttonEliminarCuotaAdm = new JButton((new ImageIcon("remove.png")));
+        buttonCancelarCuotaAdm = new JButton((new ImageIcon("exit.png")));
     }
 }

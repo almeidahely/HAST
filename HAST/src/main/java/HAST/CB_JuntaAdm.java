@@ -8,31 +8,30 @@ public class CB_JuntaAdm {
     private JPanel panel;
     private JComboBox selectorSocio;
     private JComboBox SelectorCargo;
-    private JButton buttonAnadir;
-    private JButton buttonEliminar;
-    private JButton buttonEditar;
-    private JButton buttonCancelar;
+    private JButton buttonAnadirJunta;
+    private JButton buttonEliminarJunta;
+    private JButton buttonEditarJunta;
+    private JButton buttonCancelarJunta;
 
     public JPanel getPanel() {
         return panel;
     }
 
     public CB_JuntaAdm(JFrame frame) {
-        buttonAnadir.addActionListener(new ActionListener() {
+        buttonAnadirJunta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        buttonEditarJunta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
 
             }
         });
-        buttonEditar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-            }
-        });
-        buttonEliminar.addActionListener(new ActionListener() {
+        buttonEliminarJunta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -40,7 +39,7 @@ public class CB_JuntaAdm {
         });
 
 
-        buttonCancelar.addActionListener(new ActionListener() {
+        buttonCancelarJunta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -49,5 +48,15 @@ public class CB_JuntaAdm {
 
             }
         });
+    }
+
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
+        buttonAnadirJunta = new JButton((new ImageIcon("plus.png")));
+        buttonEditarJunta = new JButton((new ImageIcon("edit.png")));
+        buttonEliminarJunta = new JButton((new ImageIcon("remove.png")));
+        buttonCancelarJunta = new JButton((new ImageIcon("exit.png")));
     }
 }

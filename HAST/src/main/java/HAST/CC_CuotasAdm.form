@@ -16,7 +16,7 @@
         <properties/>
         <border type="none" title="Editar cuotas"/>
         <children>
-          <component id="a9c76" class="javax.swing.JButton" binding="buttonAnadir">
+          <component id="a9c76" class="javax.swing.JButton" binding="buttonAnadirCuota" custom-create="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
@@ -24,10 +24,13 @@
               </grid>
             </constraints>
             <properties>
+              <focusPainted value="false"/>
+              <horizontalTextPosition value="0"/>
               <text value="Añadir"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="4bbac" class="javax.swing.JButton" binding="buttonEditar">
+          <component id="4bbac" class="javax.swing.JButton" binding="buttonEditarCuota" custom-create="true">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
@@ -35,10 +38,13 @@
               </grid>
             </constraints>
             <properties>
+              <focusPainted value="false"/>
+              <horizontalTextPosition value="0"/>
               <text value="Editar"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="95106" class="javax.swing.JButton" binding="buttonVer">
+          <component id="95106" class="javax.swing.JButton" binding="buttonVerCuota" custom-create="true">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
@@ -46,10 +52,13 @@
               </grid>
             </constraints>
             <properties>
+              <focusPainted value="false"/>
+              <horizontalTextPosition value="0"/>
               <text value="Ver"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
-          <component id="565b4" class="javax.swing.JButton" binding="buttonCancelar">
+          <component id="565b4" class="javax.swing.JButton" binding="buttonCancelarCuota" custom-create="true">
             <constraints>
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="100"/>
@@ -57,7 +66,10 @@
               </grid>
             </constraints>
             <properties>
-              <text value="Cancelar"/>
+              <focusPainted value="false"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Salir"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
         </children>

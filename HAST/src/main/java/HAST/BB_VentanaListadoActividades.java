@@ -10,6 +10,8 @@ public class BB_VentanaListadoActividades {
     private JPanel panelizquierdo;
     private JPanel PanelMedio;
 
+    public BB_VentanaListadoActividades(JFrame frame) {
+    }
 
     public JPanel getPrincipal() {
         return Principal;

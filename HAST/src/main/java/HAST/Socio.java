@@ -1,5 +1,6 @@
 package HAST;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,11 @@ public class Socio {
     private String fechaAlta;
     private String fechaBaja;
     private String nombreCargo;
+    private String perfil;
+
+
+    static List<Socio> listaSocio = new ArrayList<>();
+
 
     public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
 
@@ -28,12 +34,11 @@ public class Socio {
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.email = email;
-        this.codigoResponsable = codigoResponsable ;
+        this.codigoResponsable = codigoResponsable;
         this.edad = edad;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
     }
-
 
 
     public Socio(int codigoSocio, String nombre, String apellido) {
@@ -41,6 +46,7 @@ public class Socio {
         this.nombre = nombre;
         this.apellido = apellido;
     }
+
 
     public int getCodigoSocio() {
         return codigoSocio;
