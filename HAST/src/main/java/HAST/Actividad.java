@@ -24,7 +24,7 @@ public class Actividad {
         this.fechaActividad = fechaActividad;
     }
 
-}
+
 
     public int getCodigoActividad() {
         return codigoActividad;

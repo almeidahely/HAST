@@ -18,15 +18,7 @@ public class Socio {
     private int edad;
     private String fechaAlta;
     private String fechaBaja;
-<<<<<<< HEAD
-    private String nombreCargo;
-    private String perfil;
 
-
-    static List<Socio> listaSocio = new ArrayList<>();
-
-=======
->>>>>>> master
 
     public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, Socio codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
 
@@ -91,7 +83,4 @@ public class Socio {
         return fechaAlta;
     }
 
-    public String getNombreCargo() {
-        return nombreCargo;
-    }
 }
