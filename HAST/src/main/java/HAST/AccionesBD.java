@@ -149,7 +149,7 @@ public class AccionesBD {
             ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= activo");
 
             while (activas.next()) {
-                Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), activas.getInt("organizador"), activas.getString("fechaActividad"));
+                Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), activas.getInt("organizador"), activas.getString("fechaActividad"),activas.getString("tipo"),activas.getString("dificultad"));
             }
 
 
