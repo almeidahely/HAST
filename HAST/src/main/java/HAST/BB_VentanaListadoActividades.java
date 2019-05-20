@@ -4,11 +4,8 @@ import javax.swing.*;
 
 public class BB_VentanaListadoActividades {
     private JPanel Principal;
-    private JPanel panelDerecho;
-    private JButton buttonAnterior;
-    private JButton button1sig;
-    private JPanel panelizquierdo;
     private JPanel PanelMedio;
+    private JTable tableActividad;
 
     public BB_VentanaListadoActividades(JFrame frame) {
     }

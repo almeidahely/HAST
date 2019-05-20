@@ -170,11 +170,11 @@ public class AccionesBD {
             ResultSet resultSetSocio = todoSocios.executeQuery("select * from Socio ");
             while (resultSetSocio.next()) {
 
-                Socio nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), resultSetSocio.getInt("codigoResponsable"), resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
+              //  Socio nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), resultSetSocio.getInt("codigoResponsable"), resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
 
                 //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
 
-                socios.put(resultSetSocio.getInt("codigoSocio"), nuevoSocio);
+              //  socios.put(resultSetSocio.getInt("codigoSocio"), nuevoSocio);//
 
 
             }
