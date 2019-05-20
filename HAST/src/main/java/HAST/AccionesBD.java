@@ -83,9 +83,9 @@ public class AccionesBD {
             while (mayoresDeEdad.next()) {
 
 
-                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"), mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"));
 
 
+                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("DNI") ,mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"),mayoresDeEdad.getString("email"),mayoresDeEdad.getString("fechaNacimiento"));
                 listaSocioMayorDeEdad.add(nuevoSocio);
 
 
@@ -144,9 +144,17 @@ public class AccionesBD {
         try {
             Statement actividad = conexion.createStatement();
             ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= activo");
+            SeleccionarMayoresDe18();
 
             while (activas.next()) {
-                Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), activas.getInt("organizador"), activas.getString("fechaActividad"), activas.getString("tipo"), activas.getString("dificultad"));
+                int organizador = activas.getInt("organizador");
+                for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
+                    if(organizador ==socio.getCodigoSocio()){
+                        Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("fechaActividad"), activas.getString("tipo"), activas.getString("dificultad"));
+
+                    }
+                }
+
             }
 
 
