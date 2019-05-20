@@ -13,8 +13,8 @@ public class BD_JuntaSocio {
     private JTable tabla;
 
 
-   static private Map<Integer, Socio> socios = new HashMap<>();
-   static private Map<Integer, Cargo> cargos = new HashMap<>();
+    private Map<Integer, Socio> socios = new HashMap<>();
+    private Map<Integer, Cargo> cargos = new HashMap<>();
 
 
     public BD_JuntaSocio() {

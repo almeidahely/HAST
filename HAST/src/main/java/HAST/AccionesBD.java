@@ -143,7 +143,7 @@ public class AccionesBD {
 
         try {
             Statement actividad = conexion.createStatement();
-            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= activo");
+            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= 'activo'");
             SeleccionarMayoresDe18();
 
             while (activas.next()) {

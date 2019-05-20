@@ -9,19 +9,20 @@ import java.util.List;
 
 public class TablaActividadModel extends AbstractTableModel {
 
-    private String[] columnas = {"codigoActividad", "descripción", "precio", "organizador", "fechaActividad"};
-    private List<Actividad> listaActividades;
+    private String[] columnas = {"codigoActividad", "descripción", "precio", "organizador", "dificultad", "fechaActividad"};
+
+
+
 
     public TablaActividadModel() {
+      AccionesBD.listarActividades();
 
-        listaActividades = BaseDatosActividad.listarActividades();
     }
-
 
 
     @Override
     public int getRowCount() {
-        return listaActividades.size();
+        return AccionesBD.listaActividades.size();
     }
 
     @Override
@@ -31,7 +32,7 @@ public class TablaActividadModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Actividad a = listaActividades.get(rowIndex);
+        Actividad a = AccionesBD.listaActividades.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
@@ -44,12 +45,18 @@ public class TablaActividadModel extends AbstractTableModel {
                 return a.getOrganizador();
 
             case 4:
+                return a.getDificultad();
+
+            case 5:
+                return a.getTipo();
+            case 6:
                 return a.getFechaActividad();
 
         }
 
         return null;
     }
+
     @Override
     public String getColumnName(int column) {
         return columnas[column];
