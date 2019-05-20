@@ -14,18 +14,21 @@ public class Socio {
     private String apellido;
     private String fechaNacimiento;
     private String email;
-    private int codigoResponsable;
+    private Socio codigoResponsable;
     private int edad;
     private String fechaAlta;
     private String fechaBaja;
+<<<<<<< HEAD
     private String nombreCargo;
     private String perfil;
 
 
     static List<Socio> listaSocio = new ArrayList<>();
 
+=======
+>>>>>>> master
 
-    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
+    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, Socio codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
 
         this.codigoSocio = codigoSocio;
         this.DNI = DNI;
@@ -76,7 +79,7 @@ public class Socio {
         return email;
     }
 
-    public int getCodigoResponsable() {
+    public Socio getCodigoResponsable() {
         return codigoResponsable;
     }
 
