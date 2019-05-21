@@ -15,7 +15,6 @@ public class Socio {
     private String fechaNacimiento;
     private String email;
     private Socio codigoResponsable;
-    private int edad;
     private String fechaAlta;
     private String fechaBaja;
      List<Socio> listaMenoresACargo = new ArrayList<>();
@@ -86,9 +85,6 @@ public class Socio {
         return codigoResponsable;
     }
 
-    public int getEdad() {
-        return edad;
-    }
 
     public String getFechaAlta() {
         return fechaAlta;
