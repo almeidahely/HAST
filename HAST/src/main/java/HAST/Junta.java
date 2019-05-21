@@ -23,7 +23,7 @@ public class Junta {
         this.codigoCargo = codigoCargo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.numAjuntado = numAjuntado;
+        this.numAjuntado  = numAjuntado;
 
 
     }
