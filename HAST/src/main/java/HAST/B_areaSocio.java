@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+
 public class B_areaSocio extends Container {
     public JPanel socioPanel;
     private JButton laJuntaButton;
@@ -60,7 +61,14 @@ public class B_areaSocio extends Container {
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
+                AccionesBD.listarActividades();
+
+                for (Actividad actividad : AccionesBD.listaActividades) {
+                    //comboBox1.addItem(actividad.getCodigoActividad());
+                    System.out.println(actividad.getCodigoActividad());
+                }
             }
+
         });
         verCalendarioButton.addActionListener(new ActionListener() {
             @Override
