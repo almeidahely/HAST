@@ -29,8 +29,8 @@
               <component id="c30c7" class="javax.swing.JButton" binding="imagenButton" custom-create="true" default-binding="true">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <minimum-size width="70" height="70"/>
-                    <preferred-size width="70" height="70"/>
+                    <minimum-size width="50" height="50"/>
+                    <preferred-size width="50" height="50"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -87,7 +87,7 @@
               <text value="Fecha de nacimiento:"/>
             </properties>
           </component>
-          <component id="b27d2" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="b27d2" class="javax.swing.JTextField" binding="textNombre">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -95,25 +95,34 @@
             </constraints>
             <properties>
               <editable value="false"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
+              <opaque value="true"/>
             </properties>
           </component>
-          <component id="401f" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="401f" class="javax.swing.JTextField" binding="textTelefono">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="true"/>
+              <font name="Avenir Next" size="12"/>
+            </properties>
           </component>
-          <component id="92288" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+          <component id="92288" class="javax.swing.JTextField" binding="textEmail">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="true"/>
+              <font name="Avenir Next" size="12"/>
+            </properties>
           </component>
-          <component id="487dc" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="487dc" class="javax.swing.JTextField" binding="textFechaNacimiento">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -121,6 +130,8 @@
             </constraints>
             <properties>
               <editable value="false"/>
+              <enabled value="false"/>
+              <font name="Avenir Next" size="12"/>
             </properties>
           </component>
         </children>
@@ -161,7 +172,7 @@
         </children>
       </grid>
       <grid id="25870" binding="panelIzInferior" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+        <margin top="5" left="5" bottom="5" right="5"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -170,54 +181,65 @@
         <children>
           <component id="aedbf" class="javax.swing.JLabel" binding="DNINIELabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font name="Avenir Next Condensed" size="12"/>
+              <horizontalTextPosition value="11"/>
               <text value="DNI/NIE:"/>
               <verticalAlignment value="0"/>
               <verticalTextPosition value="0"/>
             </properties>
           </component>
-          <component id="d1f3e" class="javax.swing.JLabel" binding="LabelNUMERODNI">
+          <component id="d1f3e" class="javax.swing.JLabel" binding="labelDNI">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="false"/>
+              <font name="Avenir Next" size="11"/>
               <text value=""/>
             </properties>
           </component>
           <component id="3f572" class="javax.swing.JLabel" binding="sociDesdeLabel">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
+              <focusCycleRoot value="false"/>
               <font name="Avenir Next Condensed" size="12"/>
               <text value="Soci@ desde:"/>
             </properties>
           </component>
           <component id="3fead" class="javax.swing.JLabel" binding="responsableDeLabel">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <font name="Avenir Next Condensed" size="12"/>
               <text value="Responsable de:"/>
             </properties>
           </component>
           <component id="9f075" class="javax.swing.JLabel" binding="labelNumResponsab">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="false"/>
+              <focusable value="false"/>
+              <font name="Avenir Next" size="11"/>
               <text value=""/>
             </properties>
           </component>
           <component id="ba1ed" class="javax.swing.JLabel" binding="labelFechaAlta">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="false"/>
+              <font name="Avenir Next" size="11"/>
               <text value=""/>
             </properties>
           </component>

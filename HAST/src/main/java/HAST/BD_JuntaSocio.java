@@ -13,10 +13,10 @@ public class BD_JuntaSocio {
     private JTable tabla;
 
 
-
     public BD_JuntaSocio() {
-
-        tabla.setModel(new ModeloTablaJunta(AccionesBD.socios,AccionesBD.cargos));
+        AccionesBD.SeleccionarMayoresDe18();
+        AccionesBD.RellenarListaCargos();
+        tabla.setModel(new ModeloTablaJunta(AccionesBD.MapMAyoresDeEdad, AccionesBD.cargos));
 
         tabla.addComponentListener(new ComponentAdapter() {
             @Override

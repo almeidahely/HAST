@@ -3,6 +3,8 @@ package HAST;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class BA_VentanaDatosPersonales {
     public JPanel Principal;
@@ -11,10 +13,10 @@ public class BA_VentanaDatosPersonales {
     private JPanel PanelDerechoSuperior;
     private JPanel panelIzInferior;
     private JPanel PanelDerechoInferior;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField textNombre;
+    private JTextField textTelefono;
+    private JTextField textEmail;
+    private JTextField textFechaNacimiento;
     private JButton imagenButton;
     private JButton cancelarButtonDatos;
     private JButton aceptarButtonDatos;
@@ -25,7 +27,7 @@ public class BA_VentanaDatosPersonales {
     private JLabel DNINIELabel;
     private JLabel sociDesdeLabel;
     private JLabel responsableDeLabel;
-    private JLabel LabelNUMERODNI;
+    private JLabel labelDNI;
     private JLabel labelFechaAlta;
     private JLabel labelNumResponsab;
 
@@ -39,6 +41,34 @@ public class BA_VentanaDatosPersonales {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                Connection conexion = BD.getConn();
+
+                try {
+                    //actualizar datos telefono / email
+
+                    PreparedStatement stmt = conexion.prepareStatement("UPDATE SOCIO set telefono = ? where codigoSocio = ?");
+
+                    String nuevoTelefono = textTelefono.getText();
+                    stmt.setString(1, nuevoTelefono);
+                    stmt.setInt(2, A_PantallaPrincipal.getSocioUsuario());
+
+                    stmt.executeUpdate();
+
+                    PreparedStatement stmt2 = conexion.prepareStatement("UPDATE SOCIO set email = ? where codigoSocio = ?");
+                    stmt2.setString(1, textEmail.getText());
+                    stmt2.setInt(2, A_PantallaPrincipal.getSocioUsuario());
+
+                    stmt2.executeUpdate();
+
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                frame.dispose();
+
+
             }
         });
 
@@ -48,7 +78,63 @@ public class BA_VentanaDatosPersonales {
                 frame.dispose();
             }
         });
+
+
+            Connection conexion = BD.getConn();
+
+            try {
+                Statement stmt = conexion.createStatement();
+
+
+                PreparedStatement Pstmt = conexion.prepareStatement("select * from Socio where codigoSocio = ?");
+                Pstmt.setInt(1, A_PantallaPrincipal.getSocioUsuario());
+
+
+                ResultSet datosUser = Pstmt.executeQuery();
+
+
+            while (datosUser.next()) {
+                datosUser.getString("nombre");
+                datosUser.getString("telefono");
+                datosUser.getString("email");
+                datosUser.getString("fechaNacimiento");
+                datosUser.getString("DNI");
+                datosUser.getString("fechaAlta");
+                datosUser.getString("fechaBaja");
+                datosUser.getString("codigoResponsable");
+
+
+                textNombre.setText(datosUser.getString("nombre"));
+                textTelefono.setText(datosUser.getString("telefono"));
+                textEmail.setText(datosUser.getString("email"));
+                textFechaNacimiento.setText(datosUser.getString("fechaNacimiento"));
+
+
+
+
+                labelDNI.setText(datosUser.getString("DNI"));
+                labelFechaAlta.setText(datosUser.getString("fechaAlta"));
+
+                String codigoResponsable = datosUser.getString("codigoResponsable");
+
+
+                if (codigoResponsable == null) {
+                    labelNumResponsab.setVisible(false);
+                    responsableDeLabel.setVisible(false);
+                } else {
+                    labelNumResponsab.setText(datosUser.getString("codigoResponsable"));
+
+                }
+
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public JPanel getPanel() {
         return Principal;

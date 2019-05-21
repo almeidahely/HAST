@@ -37,21 +37,7 @@ public class A_PantallaPrincipal {
 
 
 //Listado de socio//
-        AccionesBD.TodosLosSocios();
-        AccionesBD.SeleccionarMayoresDe18();
-        AccionesBD.listarActividades();
 
-        List<Socio> todosLosSocios = new ArrayList<>(AccionesBD.socios.values());
-       // for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-         //  System.out.println(socio.getNombre()+".");
-         //  lista.addItem(socio.getNombre());
-      // }//
-        for (Socio socio : todosLosSocios) {
-            lista.addItem(socio.getNombre());
-        }
-       // for (Actividad actividad : AccionesBD.listaActividades) {
-          //  lista.addItem(actividad.getOrganizador().getNombre()+actividad.getCodigoActividad());
-       // }
 
 
 
@@ -123,6 +109,10 @@ public class A_PantallaPrincipal {
         aceptarButton = new JButton(new ImageIcon("sign-in.png"));
 
 
+    }
+
+    public static int getSocioUsuario() {
+        return socioUsuario;
     }
 }
 
