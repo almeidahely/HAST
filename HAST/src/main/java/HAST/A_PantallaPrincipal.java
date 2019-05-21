@@ -14,7 +14,7 @@ public class A_PantallaPrincipal {
     private JPanel Principal;
     private JTextField textNombreUsuario;
     private JButton aceptarButton;
-    private JComboBox listaMayoresEdad;
+    private JComboBox lista;
     private JButton buttonCabeceraPrincipal;
     private JPanel Fondo;
     private JPasswordField passwordField1passwordField1;
@@ -37,13 +37,23 @@ public class A_PantallaPrincipal {
 
 
 //Listado de socio//
+        AccionesBD.TodosLosSocios();
         AccionesBD.SeleccionarMayoresDe18();
+        AccionesBD.listarActividades();
 
-        for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-            listaMayoresEdad.addItem(socio.getCodigoSocio() + " " + socio.getNombre() + " " + socio.getApellido());
-
-
+        List<Socio> todosLosSocios = new ArrayList<>(AccionesBD.socios.values());
+       // for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
+         //  System.out.println(socio.getNombre()+".");
+         //  lista.addItem(socio.getNombre());
+      // }//
+        for (Socio socio : todosLosSocios) {
+            lista.addItem(socio.getNombre());
         }
+       // for (Actividad actividad : AccionesBD.listaActividades) {
+          //  lista.addItem(actividad.getOrganizador().getNombre()+actividad.getCodigoActividad());
+       // }
+
+
 
         //Listado de Socio//
         aceptarButton.addActionListener(new ActionListener() {
@@ -57,9 +67,8 @@ public class A_PantallaPrincipal {
                 AccionesBD.usuarioConectado(codigoUsuario);
 
 
-                AccionesBD.SeleccionarMayoresDe18();
-                AccionesBD.TodosLosSocios();
-                AccionesBD.listarActividades();
+
+
                 if (valor != 0) {
 
                     if (valor == 1) {

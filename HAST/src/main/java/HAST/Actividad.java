@@ -10,8 +10,8 @@ public class Actividad {
     private Socio organizador;
     private String dificultad;
     private String tipo;
-    List<Socio> participantes =new ArrayList<>();
     private String fechaActividad;
+    List<Socio> participantes =new ArrayList<>();
 
 
     public Actividad(int codigoActividad, String descripcion, double precio, Socio organizador, String dificultad, String tipo, String fechaActividad) {
@@ -25,6 +25,13 @@ public class Actividad {
     }
 
 
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
 
     public int getCodigoActividad() {
         return codigoActividad;
@@ -44,5 +51,9 @@ public class Actividad {
 
     public String getFechaActividad() {
         return fechaActividad;
+    }
+
+    public void setOrganizador(Socio organizador) {
+        this.organizador = organizador;
     }
 }

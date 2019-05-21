@@ -1,20 +1,23 @@
 package HAST;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AccionesBD {
+
     static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
     static List<Actividad> listaActividades = new ArrayList<>();
     static Map<Integer, Socio> socios = new HashMap<>();
-
+    static Map<Integer, Cargo> cargos = new HashMap<>();
     static List<String> nombreUsuarioConectado = new ArrayList<>();
 
 
-    public static List<Socio> getListaSocioMayorDeEdad() {
+    public List<Socio> getListaSocioMayorDeEdad() {
         return listaSocioMayorDeEdad;
     }
 
@@ -143,13 +146,14 @@ public class AccionesBD {
     //Lista Actividades
 
     static void listarActividades() {
-        listaActividades.clear();
         Connection conexion = BD.getConn();
+        SeleccionarMayoresDe18();
 
         try {
             Statement actividad = conexion.createStatement();
             ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= 'activo'");
             SeleccionarMayoresDe18();
+
 
             while (activas.next()) {
                 int organizador = activas.getInt("organizador");
@@ -157,6 +161,9 @@ public class AccionesBD {
                     if (organizador == socio.getCodigoSocio()) {
                         Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("fechaActividad"), activas.getString("tipo"), activas.getString("dificultad"));
 
+                for (Socio socio : listaSocioMayorDeEdad) {
+                    for (Actividad activi : socio.listaActividadesOrganizadas) {
+                        listaActividades.add(activi);
                     }
                 }
 
@@ -174,7 +181,7 @@ public class AccionesBD {
         Connection conexion = BD.getConn();
         socios.clear();
         SeleccionarMayoresDe18();
-        Socio nuevoSocio;
+        Socio nuevoSocioMenor,nuevoSocioMayor;
 
         try {
             Statement todoSocios = conexion.createStatement();
@@ -218,7 +225,9 @@ public class AccionesBD {
             añadido.setString(6, email);
             añadido.setInt(7, edad);
 
+            Period period = Period.between(fecha,CDA_AnadirSocios.selectorFecha.getDate());
             añadido.execute();
+//if (period){}
 
 
         } catch (SQLException e) {
@@ -228,6 +237,45 @@ public class AccionesBD {
     }
 
 
+    //*
+    // ELIMINAR Actividad
+
+    static void Eliminar_Actividad(String nombre) {
+        Connection conexion = BD.getConn();
+
+        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " + nombre);
+        if (respuesta == JOptionPane.YES_OPTION) {
+
+            String sql = "Delete from ACTIVIDAD" + "where nombre =?";
+            try {
+                PreparedStatement elimin = conexion.prepareStatement(sql);
+                elimin.setString(1, nombre);
+                //elimin.executeUpdate();
+
+                if (elimin.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                            "Intentelo nuevamente.");
+
+
+                }
+                elimin.close();
+                conexion.close();
+
+            } catch (SQLException e) {
+
+                JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                        "Intentelo nuevamente." + e);
+
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+    }
 }
 
 

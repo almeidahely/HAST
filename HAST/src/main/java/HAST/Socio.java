@@ -15,12 +15,14 @@ public class Socio {
     private String fechaNacimiento;
     private String email;
     private Socio codigoResponsable;
-    private int edad;
     private String fechaAlta;
     private String fechaBaja;
+     List<Socio> listaMenoresACargo = new ArrayList<>();
+    List<Actividad> listaActividadesOrganizadas = new ArrayList<>();
+    List<Actividad> ActividadesParticipante = new ArrayList<>();
 
 
-    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, Socio codigoResponsable, int edad, String fechaAlta, String fechaBaja) {
+    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, Socio codigoResponsable, String fechaAlta, String fechaBaja) {
 
         this.codigoSocio = codigoSocio;
         this.DNI = DNI;
@@ -30,16 +32,24 @@ public class Socio {
         this.fechaNacimiento = fechaNacimiento;
         this.email = email;
         this.codigoResponsable = codigoResponsable;
-        this.edad = edad;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
+
     }
 
 
-    public Socio(int codigoSocio,String DNI, String nombre, String apellido,String email,String fechaNacimiento) {
+    public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, String fechaAlta, String fechaBaja) {
+
         this.codigoSocio = codigoSocio;
+        this.DNI = DNI;
+        this.telefono = telefono;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.email = email;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaja = fechaBaja;
+
     }
 
 
@@ -75,12 +85,24 @@ public class Socio {
         return codigoResponsable;
     }
 
-    public int getEdad() {
-        return edad;
-    }
 
     public String getFechaAlta() {
         return fechaAlta;
     }
 
+    public List<Socio> getListaMenoresACargo() {
+        return listaMenoresACargo;
+    }
+
+    public List<Actividad> getListaActividadesOrganizadas() {
+        return listaActividadesOrganizadas;
+    }
+
+    public List<Actividad> getActividadesParticipante() {
+        return ActividadesParticipante;
+    }
+
+    public void setCodigoResponsable(Socio codigoResponsable) {
+        this.codigoResponsable = codigoResponsable;
+    }
 }

@@ -6,18 +6,19 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Junta {
-    private Socio codigoSocio;
-    private Cargo codigoCargo;
+    private int codigoSocio;
+    private int codigoCargo;
     private String fechaInicio;
     private String fechaFin;
     private int numAjuntado;
 
-    public Junta(Socio codigoSocio, Cargo codigoCargo, String fechaInicio, String fechaFin, int numAjuntado) {
+    public Junta(int codigoSocio, int codigoCargo, String fechaInicio, String fechaFin, int numAjuntado) {
         this.codigoSocio = codigoSocio;
         this.codigoCargo = codigoCargo;
         this.fechaInicio = fechaInicio;
@@ -25,13 +26,20 @@ public class Junta {
         this.numAjuntado = numAjuntado;
         List<Junta> juntaList = new ArrayList<>();
 
+
     }
 
-    static void MostrarJunta() {
+    public int getCodigoSocio() {
+        return codigoSocio;
+    }
 
-        try {
+    public int getCodigoCargo() {
+        return codigoCargo;
+    }
 
-            Connection connection = BD.getConn();
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
 
             //LLamado del procedimiento
             //nombre de procedimiento//
