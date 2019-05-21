@@ -1,20 +1,23 @@
 package HAST;
 
+
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AccionesBD {
-    static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
-    static List<Actividad> listaActividades = new ArrayList<>();
-    static Map<Integer, Socio> socios = new HashMap<>();
+      static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
+      static List<Actividad> listaActividades = new ArrayList<>();
+      static  Map<Integer, Socio> socios = new HashMap<>();
 
     static List<String> nombreUsuarioConectado = new ArrayList<>();
 
 
-    public static List<Socio> getListaSocioMayorDeEdad() {
+    public List<Socio> getListaSocioMayorDeEdad() {
         return listaSocioMayorDeEdad;
     }
 
@@ -84,8 +87,8 @@ public class AccionesBD {
 
 
 
-
-                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("DNI") ,mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"),mayoresDeEdad.getString("email"),mayoresDeEdad.getString("fechaNacimiento"));
+            //int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int edad, String fechaAlta, String fechaBaja
+                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("DNI") ,mayoresDeEdad.getString("telefono"),mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"),mayoresDeEdad.getString("fechaNacimiento"),mayoresDeEdad.getString("email"),mayoresDeEdad.getString("fechaAlta"),mayoresDeEdad.getString("fechaBaja"));
                 listaSocioMayorDeEdad.add(nuevoSocio);
 
 
@@ -138,20 +141,27 @@ public class AccionesBD {
     //Lista Actividades
 
     static void listarActividades() {
-        listaActividades.clear();
         Connection conexion = BD.getConn();
+        SeleccionarMayoresDe18();
 
         try {
             Statement actividad = conexion.createStatement();
-            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= activo");
-            SeleccionarMayoresDe18();
+            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD ");
+
 
             while (activas.next()) {
                 int organizador = activas.getInt("organizador");
-                for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                    if(organizador ==socio.getCodigoSocio()){
-                        Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("fechaActividad"), activas.getString("tipo"), activas.getString("dificultad"));
+                for (Socio socio : listaSocioMayorDeEdad) {
+                    if(organizador == socio.getCodigoSocio()){
+                        Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("tipo"), activas.getString("dificultad"),activas.getString("fechaActividad"));
+                        nuevaActividad.setOrganizador(socio);
+                        socio.listaActividadesOrganizadas.add(nuevaActividad);
+                    }
+                }        listaActividades.clear();
 
+                for (Socio socio : listaSocioMayorDeEdad) {
+                    for (Actividad activi : socio.listaActividadesOrganizadas) {
+                        listaActividades.add(activi);
                     }
                 }
 
@@ -169,7 +179,7 @@ public class AccionesBD {
         Connection conexion = BD.getConn();
         socios.clear();
         SeleccionarMayoresDe18();
-        Socio nuevoSocio;
+        Socio nuevoSocioMenor,nuevoSocioMayor;
 
         try {
             Statement todoSocios = conexion.createStatement();
@@ -177,13 +187,22 @@ public class AccionesBD {
 
             while (resultSetSocio.next()) {
 
-                 int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
-                for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                    if (socio.getCodigoSocio()==codigoResponsable)    {
+                for (Socio socio : listaSocioMayorDeEdad) {
+                    int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
 
-                         nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"),socio,resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
+                    if (0<codigoResponsable)    {
 
+                         nuevoSocioMenor = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"),socio, resultSetSocio.getString("fechaAlta"), resultSetSocio.getString("fechaBaja"));
+                        socio.getListaMenoresACargo().add(nuevoSocioMenor);
+                        nuevoSocioMenor.setCodigoResponsable(socio);
+                        socios.put(socio.getCodigoSocio(),socio);
                 }
+                    else{
+                         nuevoSocioMayor = new Socio(resultSetSocio.getInt("codigoSocio"),resultSetSocio.getString("DNI") ,resultSetSocio.getString("telefono"),resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"),resultSetSocio.getString("fechaNacimiento"),resultSetSocio.getString("email"),resultSetSocio.getString("fechaAlta"),resultSetSocio.getString("fechaBaja"));
+                        socios.put(resultSetSocio.getInt("codigoSocio"),socio);
+
+                    }
+
 
                 //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
 
@@ -198,22 +217,24 @@ public class AccionesBD {
 
     }
 
-    static void añadirSocioNuevo (int codigo, String DNI, String telefono, String nombre, String apellido, String fechaDeNacimiento, String email, int edad, String fechaDeAlta,String fechaDeBaja ){
+    static void añadirSocioNuevo ( String nombre,String apellido,String DNI, String telefono,    String email, String fechaDeNacimiento){
         Connection conexion = BD.getConn();
 
         try {
-            String añadirSocio= "{call CrearNuevoSocio(default,?,?,?,?,?,?,?,default,null)}";
+            String añadirSocio= "{call CrearNuevoSocio(?,?,?,?,?,?,?)}";
 
             CallableStatement añadido =conexion.prepareCall(añadirSocio);
-            añadido.setString(1,DNI);
-            añadido.setString(2,telefono);
-            añadido.setString(3,nombre);
-            añadido.setString(4,apellido);
-            añadido.setString(5,fechaDeNacimiento);
-            añadido.setString(6,email);
-            añadido.setInt(7,edad);
+            añadido.setString(1,nombre);
+            añadido.setString(3,DNI);
+            añadido.setString(4,telefono);
+            añadido.setString(2,apellido);
+            añadido.setString(6,fechaDeNacimiento);
+            añadido.setString(5,email);
+             LocalDate fecha= LocalDate.now();
 
+            Period period = Period.between(fecha,CDA_AnadirSocios.selectorFecha.getDate());
             añadido.execute();
+//if (period){}
 
 
 
