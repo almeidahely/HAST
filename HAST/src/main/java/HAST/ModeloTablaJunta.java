@@ -17,16 +17,18 @@ import java.util.Map;
 public class ModeloTablaJunta extends AbstractTableModel {
 
     private String[]todos={"nombre", "apellido", "telefono", "email", "nombreCargo", "fechaInicio"};
-    private Map<Integer, Socio> socios = new HashMap<>();
     private Map<Integer, Cargo> cargos = new HashMap<>();
      private  List<Junta> cache = new ArrayList<>();
+     private Map<Integer,Socio> socioMap = new HashMap<>();
 
 
 
     public ModeloTablaJunta(Map<Integer, Socio> socios, Map<Integer, Cargo> cargos) {
-        this.socios = socios;
         this.cargos = cargos;
         this.getData();
+        for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
+            socioMap.put(socio.getCodigoSocio(),socio);
+        }
     }
 
     private void getData(){
@@ -82,16 +84,16 @@ public class ModeloTablaJunta extends AbstractTableModel {
         switch (this.getColumnName(columnIndex)) {
             case "nombre":
                 int codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.socios.get(codigoSocio).getNombre();
+                return this.socioMap.get(codigoSocio).getNombre();
             case "apellido":
                 codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.socios.get(codigoSocio).getApellido();
+                return this.socioMap.get(codigoSocio).getApellido();
             case "telefono":
                  codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.socios.get(codigoSocio).getTelefono();
+                return this.socioMap.get(codigoSocio).getTelefono();
             case "email":
                  codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.socios.get(codigoSocio).getEmail();
+                return this.socioMap.get(codigoSocio).getEmail();
             case "nombreCargo":
                 int codigoCargo = cache.get(rowIndex).getCodigoCargo();
                 return this.cargos.get(codigoCargo).getNombreCargo();
