@@ -4,13 +4,13 @@ import javax.swing.*;
 
 public class BB_VentanaListadoActividades {
     private JPanel Principal;
-    private JPanel panelDerecho;
-    private JButton buttonAnterior;
-    private JButton button1sig;
-    private JPanel panelizquierdo;
     private JPanel PanelMedio;
+    private JTable tableActividad;
+    private JComboBox comboBox1;
 
     public BB_VentanaListadoActividades(JFrame frame) {
+        tableActividad.setModel(new TablaActividadModel());
+
     }
 
     public JPanel getPrincipal() {

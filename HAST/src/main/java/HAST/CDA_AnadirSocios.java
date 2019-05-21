@@ -1,5 +1,7 @@
 package HAST;
 
+import com.github.lgooddatepicker.components.DatePicker;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +22,7 @@ public class CDA_AnadirSocios {
     private JTextField textFechaNacimiento;
     private JTextField textTelefono;
     private JTextField textEmail;
+   static  DatePicker selectorFecha;
 
     static List<Socio> litaSocios = new ArrayList<>();
 
@@ -36,6 +39,8 @@ public class CDA_AnadirSocios {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+                AccionesBD.añadirSocioNuevo(textNombre.getText(),textApellidos.getText(),textDNI.getText(),textTelefono.getText(),textEmail.getText(),selectorFecha.getDateStringOrEmptyString());
                 //anyadirSociosBd();
 
                 textNombre.setText("");

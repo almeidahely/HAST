@@ -12,6 +12,8 @@ public class CA_PanelActividadesAdm {
     private JButton eliminarButton;
     private JButton cancelarButton;
 
+    String idcontacto="";
+
 
     public CA_PanelActividadesAdm(JFrame frame) {
         editarButton.addActionListener(new ActionListener() {
@@ -35,6 +37,12 @@ public class CA_PanelActividadesAdm {
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (idcontacto.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Debe seleccionar el nombre a eliminar","Error en la opercion",JOptionPane.ERROR_MESSAGE);
+
+                }else {
+                    AccionesBD.Eliminar_Actividad(idcontacto);
+                }
 
             }
         });
