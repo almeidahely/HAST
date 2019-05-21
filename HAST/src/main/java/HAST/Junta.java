@@ -23,8 +23,7 @@ public class Junta {
         this.codigoCargo = codigoCargo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.numAjuntado = numAjuntado;
-        List<Junta> juntaList = new ArrayList<>();
+        this.numAjuntado  = numAjuntado;
 
 
     }
