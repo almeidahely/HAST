@@ -17,25 +17,27 @@ import java.util.Map;
 public class ModeloTablaJunta extends AbstractTableModel {
 
     private String[]todos={"nombre", "apellido", "telefono", "email", "nombreCargo", "fechaInicio"};
-   static private Map<Integer, Socio> socios = new HashMap<>();
-   static private Map<Integer, Cargo> cargos = new HashMap<>();
+    private Map<Integer, Socio> socios = new HashMap<>();
+    private Map<Integer, Cargo> cargos = new HashMap<>();
+     private  List<Junta> cache = new ArrayList<>();
 
-    ArrayList<Junta> cache = new ArrayList<Junta>();
+
 
     public ModeloTablaJunta(Map<Integer, Socio> socios, Map<Integer, Cargo> cargos) {
         this.socios = socios;
         this.cargos = cargos;
-
         this.getData();
     }
 
     private void getData(){
+
         try {
             Connection connection = BD.getConn();
 
             //LLamado del procedimiento
             //nombre de procedimiento//
-            String sql = " LISTA_DATO_NEW(?); end;";
+
+            String sql = "{ call LISTA_DATO(?) }";
             CallableStatement listjunta = connection.prepareCall(sql);
             //Parametros de entrada
             listjunta.registerOutParameter(1, OracleTypes.CURSOR);//recibe parametro de cursor

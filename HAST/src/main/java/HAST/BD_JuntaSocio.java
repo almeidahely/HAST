@@ -13,11 +13,11 @@ public class BD_JuntaSocio {
     private JTable tabla;
 
 
-    private Map<Integer, Socio> socios = new HashMap<>();
-    private Map<Integer, Cargo> cargos = new HashMap<>();
-
 
     public BD_JuntaSocio() {
+
+        tabla.setModel(new ModeloTablaJunta(AccionesBD.socios,AccionesBD.cargos));
+
         tabla.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -37,10 +37,6 @@ public class BD_JuntaSocio {
 
     private void createUIComponents() {
         // TODO: place custom component creation code
-
-
-        tabla=new JTable();
-        tabla.setModel(new ModeloTablaJunta(socios,cargos));
 
     }
 

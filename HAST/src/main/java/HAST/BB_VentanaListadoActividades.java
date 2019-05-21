@@ -9,6 +9,8 @@ public class BB_VentanaListadoActividades {
     private JComboBox comboBox1;
 
     public BB_VentanaListadoActividades(JFrame frame) {
+        tableActividad.setModel(new TablaActividadModel());
+
     }
 
     public JPanel getPrincipal() {
@@ -16,11 +18,4 @@ public class BB_VentanaListadoActividades {
     }
 
 
-    private void createUIComponents() {
-
-        // TODO: place custom component creation code here
-        tableActividad=new JTable();
-        tableActividad.setModel(new TablaActividadModel());
-
-    }
 }

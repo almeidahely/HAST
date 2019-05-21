@@ -1,5 +1,6 @@
 package HAST;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,10 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public class AccionesBD {
+
     static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
     static List<Actividad> listaActividades = new ArrayList<>();
     static Map<Integer, Socio> socios = new HashMap<>();
-
+    static Map<Integer, Cargo> cargos = new HashMap<>();
     static List<String> nombreUsuarioConectado = new ArrayList<>();
 
 
@@ -83,9 +85,7 @@ public class AccionesBD {
             while (mayoresDeEdad.next()) {
 
 
-
-
-                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("DNI") ,mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"),mayoresDeEdad.getString("email"),mayoresDeEdad.getString("fechaNacimiento"));
+                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"), mayoresDeEdad.getString("DNI"), mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"), mayoresDeEdad.getString("email"), mayoresDeEdad.getString("fechaNacimiento"));
                 listaSocioMayorDeEdad.add(nuevoSocio);
 
 
@@ -149,7 +149,7 @@ public class AccionesBD {
             while (activas.next()) {
                 int organizador = activas.getInt("organizador");
                 for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                    if(organizador ==socio.getCodigoSocio()){
+                    if (organizador == socio.getCodigoSocio()) {
                         Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("fechaActividad"), activas.getString("tipo"), activas.getString("dificultad"));
 
                     }
@@ -177,19 +177,19 @@ public class AccionesBD {
 
             while (resultSetSocio.next()) {
 
-                 int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
+                int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
                 for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                    if (socio.getCodigoSocio()==codigoResponsable)    {
+                    if (socio.getCodigoSocio() == codigoResponsable) {
 
-                         nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"),socio,resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
+                        nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), socio, resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
+
+                    }
+
+                    //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
+
 
                 }
-
-                //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
-
-
-
-            }}
+            }
 
 
         } catch (SQLException e) {
@@ -198,23 +198,22 @@ public class AccionesBD {
 
     }
 
-    static void añadirSocioNuevo (int codigo, String DNI, String telefono, String nombre, String apellido, String fechaDeNacimiento, String email, int edad, String fechaDeAlta,String fechaDeBaja ){
+    static void añadirSocioNuevo(int codigo, String DNI, String telefono, String nombre, String apellido, String fechaDeNacimiento, String email, int edad, String fechaDeAlta, String fechaDeBaja) {
         Connection conexion = BD.getConn();
 
         try {
-            String añadirSocio= "{call CrearNuevoSocio(default,?,?,?,?,?,?,?,default,null)}";
+            String añadirSocio = "{call CrearNuevoSocio(default,?,?,?,?,?,?,?,default,null)}";
 
-            CallableStatement añadido =conexion.prepareCall(añadirSocio);
-            añadido.setString(1,DNI);
-            añadido.setString(2,telefono);
-            añadido.setString(3,nombre);
-            añadido.setString(4,apellido);
-            añadido.setString(5,fechaDeNacimiento);
-            añadido.setString(6,email);
-            añadido.setInt(7,edad);
+            CallableStatement añadido = conexion.prepareCall(añadirSocio);
+            añadido.setString(1, DNI);
+            añadido.setString(2, telefono);
+            añadido.setString(3, nombre);
+            añadido.setString(4, apellido);
+            añadido.setString(5, fechaDeNacimiento);
+            añadido.setString(6, email);
+            añadido.setInt(7, edad);
 
             añadido.execute();
-
 
 
         } catch (SQLException e) {
@@ -224,6 +223,45 @@ public class AccionesBD {
     }
 
 
+    //*
+    // ELIMINAR Actividad
+
+    static void Eliminar_Actividad(String nombre) {
+        Connection conexion = BD.getConn();
+
+        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " + nombre);
+        if (respuesta == JOptionPane.YES_OPTION) {
+
+            String sql = "Delete from ACTIVIDAD" + "where nombre =?";
+            try {
+                PreparedStatement elimin = conexion.prepareStatement(sql);
+                elimin.setString(1, nombre);
+                //elimin.executeUpdate();
+
+                if (elimin.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                            "Intentelo nuevamente.");
+
+
+                }
+                elimin.close();
+                conexion.close();
+
+            } catch (SQLException e) {
+
+                JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                        "Intentelo nuevamente." + e);
+
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+    }
 }
 
 
