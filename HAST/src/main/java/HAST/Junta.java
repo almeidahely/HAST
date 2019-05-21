@@ -23,7 +23,7 @@ public class Junta {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.numAjuntado = numAjuntado;
-        List<Junta>juntaList=new ArrayList<>();
+        List<Junta> juntaList = new ArrayList<>();
 
     }
 
@@ -47,7 +47,7 @@ public class Junta {
             ResultSet campo = (ResultSet) listjunta.getObject(1);
             while (campo.next()) {
 
-               // Junta junt  = new Junta(campo.getString("nombre"),campo.getString("apellido"),campo.getString("telefono"),campo.getString("email"),campo.getString("nombreCargo"),campo.getDate("fechaInicio"));
+                // Junta junt  = new Junta(campo.getString("nombre"),campo.getString("apellido"),campo.getString("telefono"),campo.getString("email"),campo.getString("nombreCargo"),campo.getDate("fechaInicio"));
 
                 System.out.println("Nombre:");
                 //System.out.println(rs.getLong("CODIGO"));
@@ -73,8 +73,6 @@ public class Junta {
             e.printStackTrace();
         }
     }
-
-
 
 
 }

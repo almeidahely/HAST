@@ -83,9 +83,7 @@ public class AccionesBD {
             while (mayoresDeEdad.next()) {
 
 
-
-
-                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("DNI") ,mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"),mayoresDeEdad.getString("email"),mayoresDeEdad.getString("fechaNacimiento"));
+                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"), mayoresDeEdad.getString("DNI"), mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"), mayoresDeEdad.getString("email"), mayoresDeEdad.getString("fechaNacimiento"));
                 listaSocioMayorDeEdad.add(nuevoSocio);
 
 
@@ -135,6 +133,13 @@ public class AccionesBD {
     }
 
 
+
+
+
+
+
+
+
     //Lista Actividades
 
     static void listarActividades() {
@@ -143,13 +148,13 @@ public class AccionesBD {
 
         try {
             Statement actividad = conexion.createStatement();
-            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= activo");
+            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD where cancelado= 'activo'");
             SeleccionarMayoresDe18();
 
             while (activas.next()) {
                 int organizador = activas.getInt("organizador");
                 for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                    if(organizador ==socio.getCodigoSocio()){
+                    if (organizador == socio.getCodigoSocio()) {
                         Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("fechaActividad"), activas.getString("tipo"), activas.getString("dificultad"));
 
                     }
@@ -177,19 +182,19 @@ public class AccionesBD {
 
             while (resultSetSocio.next()) {
 
-                 int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
+                int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
                 for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                    if (socio.getCodigoSocio()==codigoResponsable)    {
+                    if (socio.getCodigoSocio() == codigoResponsable) {
 
-                         nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"),socio,resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
+                        nuevoSocio = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), socio, resultSetSocio.getInt("edad"), resultSetSocio.getString("fechaDeAlta"), resultSetSocio.getString("fechaDeBaja"));
+
+                    }
+
+                    //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
+
 
                 }
-
-                //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
-
-
-
-            }}
+            }
 
 
         } catch (SQLException e) {
@@ -198,23 +203,22 @@ public class AccionesBD {
 
     }
 
-    static void añadirSocioNuevo (int codigo, String DNI, String telefono, String nombre, String apellido, String fechaDeNacimiento, String email, int edad, String fechaDeAlta,String fechaDeBaja ){
+    static void añadirSocioNuevo(int codigo, String DNI, String telefono, String nombre, String apellido, String fechaDeNacimiento, String email, int edad, String fechaDeAlta, String fechaDeBaja) {
         Connection conexion = BD.getConn();
 
         try {
-            String añadirSocio= "{call CrearNuevoSocio(default,?,?,?,?,?,?,?,default,null)}";
+            String añadirSocio = "{call CrearNuevoSocio(default,?,?,?,?,?,?,?,default,null)}";
 
-            CallableStatement añadido =conexion.prepareCall(añadirSocio);
-            añadido.setString(1,DNI);
-            añadido.setString(2,telefono);
-            añadido.setString(3,nombre);
-            añadido.setString(4,apellido);
-            añadido.setString(5,fechaDeNacimiento);
-            añadido.setString(6,email);
-            añadido.setInt(7,edad);
+            CallableStatement añadido = conexion.prepareCall(añadirSocio);
+            añadido.setString(1, DNI);
+            añadido.setString(2, telefono);
+            añadido.setString(3, nombre);
+            añadido.setString(4, apellido);
+            añadido.setString(5, fechaDeNacimiento);
+            añadido.setString(6, email);
+            añadido.setInt(7, edad);
 
             añadido.execute();
-
 
 
         } catch (SQLException e) {
