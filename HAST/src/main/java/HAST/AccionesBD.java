@@ -14,6 +14,7 @@ public class AccionesBD {
       static List<Actividad> listaActividades = new ArrayList<>();
       static  Map<Integer, Socio> socios = new HashMap<>();
       static Map<Integer,Cargo> cargos = new HashMap<>();
+      static Map<Integer,Socio> MapMAyoresDeEdad = new HashMap<>();
 
     static List<String> nombreUsuarioConectado = new ArrayList<>();
 
@@ -91,6 +92,7 @@ public class AccionesBD {
             //int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int edad, String fechaAlta, String fechaBaja
                 Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("DNI") ,mayoresDeEdad.getString("telefono"),mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"),mayoresDeEdad.getString("fechaNacimiento"),mayoresDeEdad.getString("email"),mayoresDeEdad.getString("fechaAlta"),mayoresDeEdad.getString("fechaBaja"));
                 listaSocioMayorDeEdad.add(nuevoSocio);
+                MapMAyoresDeEdad.put(nuevoSocio.getCodigoSocio(),nuevoSocio);
 
 
             }
@@ -158,7 +160,9 @@ public class AccionesBD {
                         socio.listaActividadesOrganizadas.add(nuevaActividad);
                     }
                 }        listaActividades.clear();
-
+                for (Socio socio : listaSocioMayorDeEdad) {
+                   listaActividades.addAll(socio.listaActividadesOrganizadas) ;
+                }
                     }
                 }
 
@@ -276,6 +280,20 @@ public class AccionesBD {
 
         }
 
+
+    }
+
+    static void RellenarListaCargos(){
+        Connection conexion = BD.getConn();
+        try {
+            Statement todosCargo = conexion.createStatement();
+            ResultSet resultCargo = todosCargo.executeQuery("select * from Cargo");
+
+            Cargo nuevoCargo = new Cargo(resultCargo.getInt("codigoCargo"), resultCargo.getString("nombreCargo"));
+            cargos.put(resultCargo.getInt("codigoCargo"),nuevoCargo);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
