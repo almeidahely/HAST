@@ -52,4 +52,8 @@ public class Actividad {
     public String getFechaActividad() {
         return fechaActividad;
     }
+
+    public void setOrganizador(Socio organizador) {
+        this.organizador = organizador;
+    }
 }
