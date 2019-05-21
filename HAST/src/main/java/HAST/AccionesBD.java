@@ -2,6 +2,7 @@ package HAST;
 
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -160,10 +161,10 @@ public class AccionesBD {
                     }
                 }
 
-            }
 
 
-        } catch (SQLException e) {
+
+         catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -174,7 +175,7 @@ public class AccionesBD {
         Connection conexion = BD.getConn();
         socios.clear();
         SeleccionarMayoresDe18();
-        Socio nuevoSocio;
+        Socio nuevoSocioMenor,nuevoSocioMayor;
 
         try {
             Statement todoSocios = conexion.createStatement();
