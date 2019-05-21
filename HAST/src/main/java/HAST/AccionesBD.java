@@ -1,9 +1,9 @@
 package HAST;
 
 
+import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +18,7 @@ public class AccionesBD {
     static List<String> nombreUsuarioConectado = new ArrayList<>();
 
 
-    public List<Socio> getListaSocioMayorDeEdad() {
+    public static List<Socio> getListaSocioMayorDeEdad() {
         return listaSocioMayorDeEdad;
     }
 
@@ -149,13 +149,12 @@ public class AccionesBD {
     //Lista Actividades
 
     static void listarActividades() {
+        listaActividades.clear();
         Connection conexion = BD.getConn();
-        SeleccionarMayoresDe18();
 
         try {
             Statement actividad = conexion.createStatement();
             ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD ");
-
 
             while (activas.next()) {
                 int organizador = activas.getInt("organizador");
@@ -167,16 +166,13 @@ public class AccionesBD {
                     }
                 }        listaActividades.clear();
 
-                for (Socio socio : listaSocioMayorDeEdad) {
-                    for (Actividad activi : socio.listaActividadesOrganizadas) {
-                        listaActividades.add(activi);
                     }
                 }
 
-            }
 
 
-        } catch (SQLException e) {
+
+         catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -240,7 +236,6 @@ public class AccionesBD {
             añadido.setString(5,email);
              LocalDate fecha= LocalDate.now();
 
-            Period period = Period.between(fecha,CDA_AnadirSocios.selectorFecha.getDate());
             añadido.execute();
 //if (period< ){}
 
@@ -252,8 +247,48 @@ public class AccionesBD {
 
     }
 
+    // ELIMINAR Actividad
 
+    static void Eliminar_Actividad(String nombre) {
+        Connection conexion = BD.getConn();
+
+        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " + nombre);
+        if (respuesta == JOptionPane.YES_OPTION) {
+
+            String sql = "Delete from ACTIVIDAD" + "where nombre =?";
+            try {
+                PreparedStatement elimin = conexion.prepareStatement(sql);
+                elimin.setString(1, nombre);
+                //elimin.executeUpdate();
+
+                if (elimin.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                            "Intentelo nuevamente.");
+
+
+                }
+                elimin.close();
+                conexion.close();
+
+            } catch (SQLException e) {
+
+                JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                        "Intentelo nuevamente." + e);
+
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+    }
 }
+
+
+
 
 
 
