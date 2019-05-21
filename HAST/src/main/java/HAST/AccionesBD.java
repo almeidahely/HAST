@@ -1,6 +1,7 @@
 package HAST;
 
 
+import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -239,8 +240,48 @@ public class AccionesBD {
 
     }
 
+    // ELIMINAR Actividad
 
+    static void Eliminar_Actividad(String nombre) {
+        Connection conexion = BD.getConn();
+
+        int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " + nombre);
+        if (respuesta == JOptionPane.YES_OPTION) {
+
+            String sql = "Delete from ACTIVIDAD" + "where nombre =?";
+            try {
+                PreparedStatement elimin = conexion.prepareStatement(sql);
+                elimin.setString(1, nombre);
+                //elimin.executeUpdate();
+
+                if (elimin.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "Se ha eliminado!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                            "Intentelo nuevamente.");
+
+
+                }
+                elimin.close();
+                conexion.close();
+
+            } catch (SQLException e) {
+
+                JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
+                        "Intentelo nuevamente." + e);
+
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+    }
 }
+
+
+
 
 
 
