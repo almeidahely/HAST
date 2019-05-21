@@ -3,18 +3,26 @@ package HAST;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CAA_PanelEditarTipoActividad {
     public JPanel panel;
-    private JComboBox selectorTipo;
-    private JComboBox selectorDificultad;
+    private JComboBox selectorActividad;
     private JButton guardarButtonTipoActividad;
     private JButton buttonCancelarTipoActividad;
+    private JTextField textNombreActividad;
+
+    private List<String> actividades = new ArrayList<>();
 
     public CAA_PanelEditarTipoActividad(JFrame frame) {
         guardarButtonTipoActividad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+
 
             }
         });

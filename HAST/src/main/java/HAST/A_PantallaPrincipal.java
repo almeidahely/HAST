@@ -110,5 +110,9 @@ public class A_PantallaPrincipal {
 
 
     }
+
+    public static int getSocioUsuario() {
+        return socioUsuario;
+    }
 }
 

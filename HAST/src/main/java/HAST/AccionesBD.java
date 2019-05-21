@@ -141,6 +141,13 @@ public class AccionesBD {
     }
 
 
+
+
+
+
+
+
+
     //Lista Actividades
 
     static void listarActividades() {
@@ -244,7 +251,7 @@ public class AccionesBD {
 
     }
 
-    // ELIMINAR Actividad
+    // ELIMINAR Actividad ...
 
     static void Eliminar_Actividad(String nombre) {
         Connection conexion = BD.getConn();
