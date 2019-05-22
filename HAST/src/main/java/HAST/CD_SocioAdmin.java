@@ -9,7 +9,6 @@ public class CD_SocioAdmin {
     private JButton anadirButtonSocio;
     private JButton editarButtonSocio;
     private JButton cancelarButtonSocio;
-    private JTextArea textSocios;
 
     public CD_SocioAdmin(JFrame frame) {
 

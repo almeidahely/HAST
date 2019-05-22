@@ -16,18 +16,6 @@
         <properties/>
         <border type="none" title="Añadir Cuota"/>
         <children>
-          <component id="c7607" class="javax.swing.JComboBox" binding="selectorEdad">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <model>
-                <item value="Niños"/>
-                <item value="Adultos"/>
-                <item value="Mayores"/>
-              </model>
-            </properties>
-          </component>
           <component id="c27e7" class="javax.swing.JTextField" binding="textPrecio">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -74,6 +62,14 @@
             <properties>
               <text value="Precio:"/>
             </properties>
+          </component>
+          <component id="82d8c" class="javax.swing.JTextField" binding="textanyadi">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
           </component>
         </children>
       </grid>

@@ -6,7 +6,6 @@ public class BB_VentanaListadoActividades {
     private JPanel Principal;
     private JPanel PanelMedio;
     private JTable tableActividad;
-    private JComboBox comboBox1;
 
 
     // codigoActividad      number
