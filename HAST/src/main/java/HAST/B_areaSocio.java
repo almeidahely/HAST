@@ -93,7 +93,12 @@ public class B_areaSocio extends Container {
         SalirButtonSocios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+                //si es administrador
                 frame.dispose();
+
+                //si soy apenas socio
             }
         });
     }

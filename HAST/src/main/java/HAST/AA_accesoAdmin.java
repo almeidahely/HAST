@@ -9,12 +9,13 @@ public class AA_accesoAdmin {
     private JPanel adminPanel;
     private JButton botonAreaSocios;
     private JButton botonAdmin;
+    private JButton botonSalirLogin;
 
     public JPanel getPanel() {
         return panel;
     }
 
-    public AA_accesoAdmin() {
+    public AA_accesoAdmin(JFrame frame) {
         botonAreaSocios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,6 +36,14 @@ public class AA_accesoAdmin {
                 frame.setVisible(true);
             }
         });
+
+
+        botonSalirLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
     }
 
 
@@ -42,5 +51,6 @@ public class AA_accesoAdmin {
         // TODO: place custom component creation code here
         botonAreaSocios = new JButton((new ImageIcon("accesoSocios.png")));
         botonAdmin = new JButton((new ImageIcon("administrador.png")));
+        botonSalirLogin = new JButton((new ImageIcon("exit2.png")));
     }
 }

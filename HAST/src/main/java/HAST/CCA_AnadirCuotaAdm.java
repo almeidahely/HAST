@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 
 public class CCA_AnadirCuotaAdm {
     private JPanel panel;
-    private JComboBox selectorEdad;
     private JTextField textPrecio;
     private JButton ButtonGuardarCuotaAdm;
     private JButton buttonCancelarCuotaAdm;
+    private JTextField textanyadi;
 
     public JPanel getPanel() {
         return panel;

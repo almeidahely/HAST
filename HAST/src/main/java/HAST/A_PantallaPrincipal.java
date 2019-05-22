@@ -14,7 +14,6 @@ public class A_PantallaPrincipal {
     private JPanel Principal;
     private JTextField textNombreUsuario;
     private JButton aceptarButton;
-    private JComboBox lista;
     private JButton buttonCabeceraPrincipal;
     private JPanel Fondo;
     private JPasswordField passwordField1passwordField1;
@@ -23,6 +22,8 @@ public class A_PantallaPrincipal {
     private JButton calendarioButton;
 
     static List<String> usuarioConectado = new ArrayList<>();
+
+
 
 
     public JTextField getTextNombreUsuario() {
@@ -66,7 +67,7 @@ public class A_PantallaPrincipal {
                         frame.setVisible(true);
                     } else {
                         JFrame frame = new JFrame("Administrador");
-                        frame.setContentPane(new AA_accesoAdmin().getPanel());
+                        frame.setContentPane(new AA_accesoAdmin(frame).getPanel());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
                         frame.setVisible(true);
