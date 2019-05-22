@@ -15,8 +15,7 @@ public class TablaActividadModel extends AbstractTableModel {
 
 
     public TablaActividadModel() {
-      AccionesBD.listarActividades();
-
+        System.out.println(AccionesBD.listaActividades.size());
     }
 
 
