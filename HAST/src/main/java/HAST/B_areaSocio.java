@@ -61,7 +61,6 @@ public class B_areaSocio extends Container {
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
-                AccionesBD.listarActividades();
 
                 for (Actividad actividad : AccionesBD.listaActividades) {
                     //comboBox1.addItem(actividad.getCodigoActividad());
