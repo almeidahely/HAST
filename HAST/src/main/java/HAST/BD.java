@@ -29,6 +29,7 @@ public class BD {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 
             // Cadena de conexión: driver@machineName:port:SID, userid, password
+
             //conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "egibide", "egibide");
             //El de abajo Hely
             conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.56.101:1521:xe", "egibide", "egibide");
