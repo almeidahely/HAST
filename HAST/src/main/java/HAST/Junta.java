@@ -12,13 +12,13 @@ import java.util.List;
 
 
 public class Junta {
-    private int codigoSocio;
-    private int codigoCargo;
+    private Socio codigoSocio;
+    private Cargo codigoCargo;
     private String fechaInicio;
     private String fechaFin;
     private int numAjuntado;
 
-    public Junta(int codigoSocio, int codigoCargo, String fechaInicio, String fechaFin, int numAjuntado) {
+    public Junta(Socio codigoSocio, Cargo codigoCargo, String fechaInicio, String fechaFin, int numAjuntado) {
         this.codigoSocio = codigoSocio;
         this.codigoCargo = codigoCargo;
         this.fechaInicio = fechaInicio;
@@ -28,11 +28,11 @@ public class Junta {
 
     }
 
-    public int getCodigoSocio() {
+    public Socio getCodigoSocio() {
         return codigoSocio;
     }
 
-    public int getCodigoCargo() {
+    public Cargo getCodigoCargo() {
         return codigoCargo;
     }
 

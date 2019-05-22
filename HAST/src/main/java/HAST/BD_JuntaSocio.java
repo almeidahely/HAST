@@ -3,7 +3,9 @@ package HAST;
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static HAST.AccionesBD.socios;
@@ -11,11 +13,15 @@ import static HAST.AccionesBD.socios;
 public class BD_JuntaSocio {
     public JPanel panel1;
     private JTable tabla;
+    private JComboBox comboBox1;
 
 
     public BD_JuntaSocio() {
-        AccionesBD.SeleccionarMayoresDe18();
-        AccionesBD.RellenarListaCargos();
+        List<Junta> juntas =new ArrayList<>();
+        juntas.addAll(AccionesBD.listaSociosJunta.values());
+
+
+        /// apartir de aqui es lo que tenias cambialo y dejalo como actividades
         tabla.setModel(new ModeloTablaJunta(AccionesBD.MapMAyoresDeEdad, AccionesBD.cargos));
 
         tabla.addComponentListener(new ComponentAdapter() {
@@ -27,13 +33,6 @@ public class BD_JuntaSocio {
     }
 
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("BD_JuntaSocio");
-        frame.setContentPane(new BD_JuntaSocio().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     private void createUIComponents() {
         // TODO: place custom component creation code
