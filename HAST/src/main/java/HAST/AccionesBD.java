@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 public class AccionesBD {
-      static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
-      static List<Actividad> listaActividades = new ArrayList<>();
-      static  Map<Integer, Socio> socios = new HashMap<>();
-      static Map<Integer,Cargo> cargos = new HashMap<>();
-      static Map<Integer,Socio> MapMAyoresDeEdad = new HashMap<>();
+    static List<Socio> listaSocioMayorDeEdad = new ArrayList<>();
+    static List<Actividad> listaActividades = new ArrayList<>();
+    static Map<Integer, Socio> socios = new HashMap<>();
+    static Map<Integer, Cargo> cargos = new HashMap<>();
+    static Map<Integer, Socio> MapMAyoresDeEdad = new HashMap<>();
 
     static List<String> nombreUsuarioConectado = new ArrayList<>();
 
@@ -56,6 +56,8 @@ public class AccionesBD {
             switch (perfil) {
                 case "usuario":
                     confirm = 1;
+
+
                     break;
 
                 case "administrador":
@@ -88,11 +90,10 @@ public class AccionesBD {
             while (mayoresDeEdad.next()) {
 
 
-
-            //int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int edad, String fechaAlta, String fechaBaja
-                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"),mayoresDeEdad.getString("DNI") ,mayoresDeEdad.getString("telefono"),mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"),mayoresDeEdad.getString("fechaNacimiento"),mayoresDeEdad.getString("email"),mayoresDeEdad.getString("fechaAlta"),mayoresDeEdad.getString("fechaBaja"));
+                //int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, int edad, String fechaAlta, String fechaBaja
+                Socio nuevoSocio = new Socio(mayoresDeEdad.getInt("codigoSocio"), mayoresDeEdad.getString("DNI"), mayoresDeEdad.getString("telefono"), mayoresDeEdad.getString("nombre"), mayoresDeEdad.getString("apellido"), mayoresDeEdad.getString("fechaNacimiento"), mayoresDeEdad.getString("email"), mayoresDeEdad.getString("fechaAlta"), mayoresDeEdad.getString("fechaBaja"));
                 listaSocioMayorDeEdad.add(nuevoSocio);
-                MapMAyoresDeEdad.put(nuevoSocio.getCodigoSocio(),nuevoSocio);
+                MapMAyoresDeEdad.put(nuevoSocio.getCodigoSocio(), nuevoSocio);
 
 
             }
@@ -141,13 +142,6 @@ public class AccionesBD {
     }
 
 
-
-
-
-
-
-
-
     //Lista Actividades
 
     static void listarActividades() {
@@ -161,22 +155,18 @@ public class AccionesBD {
             while (activas.next()) {
                 int organizador = activas.getInt("organizador");
                 for (Socio socio : listaSocioMayorDeEdad) {
-                    if(organizador == socio.getCodigoSocio()){
-                        Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("tipo"), activas.getString("dificultad"),activas.getString("fechaActividad"));
+                    if (organizador == socio.getCodigoSocio()) {
+                        Actividad nuevaActividad = new Actividad(activas.getInt("codigoActividad"), activas.getString("descripcion"), activas.getDouble("precio"), socio, activas.getString("tipo"), activas.getString("dificultad"), activas.getString("fechaActividad"));
                         nuevaActividad.setOrganizador(socio);
                         socio.listaActividadesOrganizadas.add(nuevaActividad);
                     }
-                }        listaActividades.clear();
+                }
+                listaActividades.clear();
                 for (Socio socio : listaSocioMayorDeEdad) {
-                   listaActividades.addAll(socio.listaActividadesOrganizadas) ;
+                    listaActividades.addAll(socio.listaActividadesOrganizadas);
                 }
-                    }
-                }
-
-
-
-
-         catch (SQLException e) {
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -187,7 +177,7 @@ public class AccionesBD {
         Connection conexion = BD.getConn();
         socios.clear();
         SeleccionarMayoresDe18();
-        Socio nuevoSocioMenor,nuevoSocioMayor;
+        Socio nuevoSocioMenor, nuevoSocioMayor;
 
         try {
             Statement todoSocios = conexion.createStatement();
@@ -198,25 +188,24 @@ public class AccionesBD {
                 for (Socio socio : listaSocioMayorDeEdad) {
                     int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
 
-                    if (0<codigoResponsable)    {
+                    if (0 < codigoResponsable) {
 
-                         nuevoSocioMenor = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"),socio, resultSetSocio.getString("fechaAlta"), resultSetSocio.getString("fechaBaja"));
+                        nuevoSocioMenor = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), socio, resultSetSocio.getString("fechaAlta"), resultSetSocio.getString("fechaBaja"));
                         socio.getListaMenoresACargo().add(nuevoSocioMenor);
                         nuevoSocioMenor.setCodigoResponsable(socio);
-                        socios.put(socio.getCodigoSocio(),socio);
-                }
-                    else{
-                         nuevoSocioMayor = new Socio(resultSetSocio.getInt("codigoSocio"),resultSetSocio.getString("DNI") ,resultSetSocio.getString("telefono"),resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"),resultSetSocio.getString("fechaNacimiento"),resultSetSocio.getString("email"),resultSetSocio.getString("fechaAlta"),resultSetSocio.getString("fechaBaja"));
-                        socios.put(resultSetSocio.getInt("codigoSocio"),socio);
+                        socios.put(socio.getCodigoSocio(), socio);
+                    } else {
+                        nuevoSocioMayor = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), resultSetSocio.getString("fechaAlta"), resultSetSocio.getString("fechaBaja"));
+                        socios.put(resultSetSocio.getInt("codigoSocio"), socio);
 
                     }
 
 
-                //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
+                    //orden de los campos en BD: Nombre, Apellido, DNI, codigoSocio, Telefono, email, Perfil, fechaAlta, fechaBaja, fechaNacimiento, codigoResponsable
 
 
-
-            }}
+                }
+            }
 
 
         } catch (SQLException e) {
@@ -225,24 +214,23 @@ public class AccionesBD {
 
     }
 
-    static void añadirSocioNuevo ( String nombre,String apellido,String DNI, String telefono,    String email, String fechaDeNacimiento){
+    static void añadirSocioNuevo(String nombre, String apellido, String DNI, String telefono, String email, String fechaDeNacimiento) {
         Connection conexion = BD.getConn();
 
         try {
-            String añadirSocio= "{call CrearNuevoSocio(?,?,?,?,?,?,?)}";
+            String añadirSocio = "{call CrearNuevoSocio(?,?,?,?,?,?,?)}";
 
-            CallableStatement añadido =conexion.prepareCall(añadirSocio);
-            añadido.setString(1,nombre);
-            añadido.setString(3,DNI);
-            añadido.setString(4,telefono);
-            añadido.setString(2,apellido);
-            añadido.setString(6,fechaDeNacimiento);
-            añadido.setString(5,email);
-             LocalDate fecha= LocalDate.now();
+            CallableStatement añadido = conexion.prepareCall(añadirSocio);
+            añadido.setString(1, nombre);
+            añadido.setString(3, DNI);
+            añadido.setString(4, telefono);
+            añadido.setString(2, apellido);
+            añadido.setString(6, fechaDeNacimiento);
+            añadido.setString(5, email);
+            LocalDate fecha = LocalDate.now();
 
             añadido.execute();
 //if (period< ){}
-
 
 
         } catch (SQLException e) {
@@ -290,14 +278,14 @@ public class AccionesBD {
 
     }
 
-    static void RellenarListaCargos(){
+    static void RellenarListaCargos() {
         Connection conexion = BD.getConn();
         try {
             Statement todosCargo = conexion.createStatement();
             ResultSet resultCargo = todosCargo.executeQuery("select * from Cargo");
 
             Cargo nuevoCargo = new Cargo(resultCargo.getInt("codigoCargo"), resultCargo.getString("nombreCargo"));
-            cargos.put(resultCargo.getInt("codigoCargo"),nuevoCargo);
+            cargos.put(resultCargo.getInt("codigoCargo"), nuevoCargo);
         } catch (SQLException e) {
             e.printStackTrace();
         }

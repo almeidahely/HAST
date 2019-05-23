@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="Principal" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="680" height="576"/>
+      <xy x="20" y="20" width="680" height="651"/>
     </constraints>
     <properties>
       <background color="-393223"/>
@@ -75,7 +75,7 @@
                 <properties>
                   <font name="Avenir Next" size="14"/>
                   <foreground color="-13544005"/>
-                  <text value="Codigo de Usuario:"/>
+                  <text value="Código de socio:"/>
                 </properties>
               </component>
               <component id="3c91a" class="javax.swing.JLabel">
@@ -139,7 +139,7 @@
             <children>
               <component id="53ffa" class="javax.swing.JButton" binding="aceptarButton" custom-create="true">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="1.0" weighty="1.0"/>
                 </constraints>
                 <properties>
@@ -165,10 +165,24 @@
               </component>
               <vspacer id="a371c">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                   <gridbag top="20" left="0" bottom="20" right="0" weightx="0.0" weighty="0.0"/>
                 </constraints>
               </vspacer>
+              <component id="7733d" class="javax.swing.JLabel" binding="textError">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <font name="Avenir Next" size="12" style="2"/>
+                  <foreground color="-4516341"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Código de socio o contraseña incorrectos."/>
+                  <visible value="false"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>

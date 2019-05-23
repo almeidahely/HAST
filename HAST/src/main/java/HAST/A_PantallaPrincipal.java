@@ -19,11 +19,10 @@ public class A_PantallaPrincipal {
     private JPasswordField passwordField1passwordField1;
     private JButton iconUser;
     private JButton iconPassword;
+    private JLabel textError;
     private JButton calendarioButton;
 
     static List<String> usuarioConectado = new ArrayList<>();
-
-
 
 
     public JTextField getTextNombreUsuario() {
@@ -45,19 +44,38 @@ public class A_PantallaPrincipal {
         System.out.println(AccionesBD.listaActividades.size());
 
 
-
         //Listado de Socio//
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int codigoUsuario = Integer.parseInt(textNombreUsuario.getText());
-                int valor = AccionesBD.ComprobarContraseña(codigoUsuario, String.valueOf(passwordField1passwordField1.getPassword()));
+
+
+                int codigoUsuario = 0;
+                int valor = 0;
+
+                try {
+                    codigoUsuario = Integer.parseInt(textNombreUsuario.getText());
+                    valor = 0;
+
+                } catch (NumberFormatException ex) {
+                    //textError.setText("Código de usuario incorrecto");
+                }
+
+                try {
+                    valor = AccionesBD.ComprobarContraseña(codigoUsuario, String.valueOf(passwordField1passwordField1.getPassword()));
+                } catch (Exception ex) {
+                    textError.setVisible(true);
+                } finally {
+
+                }
+
+                if (valor == 1 || valor == 2) {
+                    textError.setVisible(false);
+                }
 
 
                 //Nombre del usuario Logueado / conectado.
                 AccionesBD.usuarioConectado(codigoUsuario);
-
-
 
 
                 if (valor != 0) {
