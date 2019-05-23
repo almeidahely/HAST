@@ -48,7 +48,9 @@ public class CCA_AnadirCuotaAdm {
                     añadido.setDouble(2,Double.parseDouble(textPrecio.getText().toString()));
 
 
-                    añadido.execute();
+                   añadido.execute();
+                      JOptionPane.showMessageDialog(null,"Guardado");
+
 
 
 
@@ -61,6 +63,7 @@ public class CCA_AnadirCuotaAdm {
 
 
 
+                System.out.println("pulsado boton guardar");
             }
 
         });
