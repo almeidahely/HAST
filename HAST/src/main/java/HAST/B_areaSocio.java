@@ -103,6 +103,10 @@ public class B_areaSocio extends Container {
     }
 
 
+    public JButton getSalirButtonSocios() {
+        return SalirButtonSocios;
+    }
+
     private void createUIComponents() {
         // TODO: place custom component creation code here
 

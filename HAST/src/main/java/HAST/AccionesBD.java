@@ -55,6 +55,8 @@ public class AccionesBD {
             switch (perfil) {
                 case "usuario":
                     confirm = 1;
+
+
                     break;
 
                 case "administrador":
