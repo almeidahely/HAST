@@ -39,7 +39,7 @@ public class A_PantallaPrincipal {
 //Listado de socio//
         AccionesBD.SeleccionarMayoresDe18();
         AccionesBD.listarActividades();
-
+        AccionesBD.TodosLosSocios();
         System.out.println(AccionesBD.listaSocioMayorDeEdad.size());
         System.out.println(AccionesBD.listaActividades.size());
 

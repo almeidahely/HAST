@@ -187,15 +187,15 @@ public class AccionesBD {
                 for (Socio socio : listaSocioMayorDeEdad) {
                     int codigoResponsable = resultSetSocio.getInt("codigoResponsable");
 
-                    if (0 < codigoResponsable) {
+                    if (codigoResponsable>0) {
 
                         nuevoSocioMenor = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), socio, resultSetSocio.getString("fechaAlta"), resultSetSocio.getString("fechaBaja"));
                         socio.getListaMenoresACargo().add(nuevoSocioMenor);
                         nuevoSocioMenor.setCodigoResponsable(socio);
-                        socios.put(socio.getCodigoSocio(), socio);
+                        socios.put(resultSetSocio.getInt("codigoSocio"), nuevoSocioMenor);
                     } else {
                         nuevoSocioMayor = new Socio(resultSetSocio.getInt("codigoSocio"), resultSetSocio.getString("DNI"), resultSetSocio.getString("telefono"), resultSetSocio.getString("nombre"), resultSetSocio.getString("apellido"), resultSetSocio.getString("fechaNacimiento"), resultSetSocio.getString("email"), resultSetSocio.getString("fechaAlta"), resultSetSocio.getString("fechaBaja"));
-                        socios.put(resultSetSocio.getInt("codigoSocio"), socio);
+                        socios.put(resultSetSocio.getInt("codigoSocio"), nuevoSocioMayor);
 
                     }
 
@@ -297,15 +297,13 @@ public class AccionesBD {
         Connection conexion = BD.getConn();
         try {
             Statement sociosJunta = conexion.createStatement();
-            ResultSet socioAdmin = sociosJunta.executeQuery("select* from JUNTA where fecha_fin is not null");
+            ResultSet socioAdmin = sociosJunta.executeQuery("select* from JUNTA where fecha_fin is  null");
 
             while (socioAdmin.next()) {
 
                 Socio socio= socios.get(socioAdmin.getInt("codigoSocio"));
                 Cargo cargo= cargos.get(socioAdmin.getInt("codigoCargo"));
                Junta nuevo = new Junta(socio,cargo,socioAdmin.getString("fechaInicio"),socioAdmin.getString("fecha_Fin"),socioAdmin.getInt("numAjuntado"));
-//                listaSocioMayorDeEdad.get(socioAdmin.getInt("codigoSocio")).setCargo(cargos.get("codigoCargo"));
-//                cargos.get("codigoCargo").setSocio(socios.get("codigoSocio"));
                 listaSociosJunta.put(socioAdmin.getInt("codigoSocio"),nuevo);
             }
         } catch (SQLException e) {

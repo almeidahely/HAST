@@ -17,7 +17,7 @@ public class ModeloTablaJunta extends AbstractTableModel {
 
     private List<Junta> juntas;
 
-    private String[] todos = {"Nombre", "Apellido", "Telefono", "Email", "FechaInicio", "NombreCargo"};
+    private String[] todos = {"NombreCargo","Nombre", "Apellido", "Telefono", "Email"};
 
     public ModeloTablaJunta() {
 
