@@ -77,6 +77,8 @@ public class CDA_AnadirSocios {
                     String email = textEmail.getText();
                     String perfil = (String) selectorPerfil.getSelectedItem();
 
+                    //
+
 
                     //fechaAlta
                     java.util.Date date = new java.util.Date();
