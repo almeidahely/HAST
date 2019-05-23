@@ -15,56 +15,21 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 public class ModeloTablaJunta extends AbstractTableModel {
 
-    private String[]todos={"nombre", "apellido", "telefono", "email", "nombreCargo", "fechaInicio"};
-    private Map<Integer, Cargo> cargos;
-     private  List<Junta> cache = new ArrayList<>();
-     private Map<Integer,Socio> soc;
+    private List<Junta> juntas;
 
+    private String[] todos = {"Nombre", "Apellido", "Telefono", "Email", "FechaInicio", "NombreCargo"};
 
-    public ModeloTablaJunta(Map<Integer, Socio> socios, Map<Integer, Cargo> cargos) {
-        this.cargos = cargos;
-        this.getData();
-        this.soc=socios;
+    public ModeloTablaJunta() {
+
+        juntas = new ArrayList<>();
+        juntas.addAll(AccionesBD.listaSociosJunta.values());
+
     }
 
-    private void getData(){
-
-        try {
-
-            Connection connection = BD.getConn();
-
-            //LLamado del procedimiento
-            //nombre de procedimiento//
-            System.out.println("hola");
-            String sql = "{ call LISTA_DATO(?) }";
-            CallableStatement listjunta = connection.prepareCall(sql);
-            //Parametros de entrada
-            listjunta.registerOutParameter(1, OracleTypes.CURSOR);//recibe parametro de cursor
-           listjunta.execute();
-
-            //Se obtiene el cursor en forma de ResultSet
-            ResultSet campo = (ResultSet) listjunta.getObject(1);
-            while (campo.next()) {
-                Junta junt = new Junta(campo.getInt("codigoSocio"),
-                        campo.getInt("codigoCargo"),
-                        campo.getString("fechaInicio"),
-                        (campo.getString("fechaFin")),
-                        campo.getInt("numAjuntado"));
-                cache.add(junt);
-            }
-            campo.close();
-            listjunta.close();
-            connection.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-    }
 
     @Override
     public int getRowCount() {
-        return cache.size();
+        return juntas.size();
     }
 
     @Override
@@ -72,36 +37,39 @@ public class ModeloTablaJunta extends AbstractTableModel {
         return todos.length;
     }
 
-    public String getColumnName(int col) {
-        return todos[col];
-    }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch (this.getColumnName(columnIndex)) {
-            case "nombre":
-                int codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.soc.get(codigoSocio).getNombre();
-            case "apellido":
-                codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.soc.get(codigoSocio).getApellido();
-            case "telefono":
-                 codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.soc.get(codigoSocio).getTelefono();
-            case "email":
-                 codigoSocio = cache.get(rowIndex).getCodigoSocio();
-                return this.soc.get(codigoSocio).getEmail();
-            case "nombreCargo":
-                int codigoCargo = cache.get(rowIndex).getCodigoCargo();
-                return this.cargos.get(codigoCargo).getNombreCargo();
-            case "fechaInicio":
-                return cache.get(rowIndex).getFechaInicio();
-            default:
-                return null;
+
+        Junta j=juntas.get(rowIndex);
+
+        switch (columnIndex) {
+            case 1:
+                return j.getCodigoSocio().getNombre();
+            case 2:
+                return j.getCodigoSocio().getApellido();
+            case 3:
+                return j.getCodigoSocio().getTelefono();
+            case 4:
+                return j.getCodigoSocio().getEmail();
+
+            case 0:
+               return j.getCodigoCargo().getNombreCargo();
+
         }
+
+
+        return null;
+    }
+
+    @Override
+    public String getColumnName(int column) {
+        return todos[column];
     }
 
 }
+
+
 
 
 

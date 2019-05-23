@@ -295,15 +295,16 @@ public class AccionesBD {
         Connection conexion = BD.getConn();
         try {
             Statement sociosJunta = conexion.createStatement();
-            ResultSet socioAdmin = sociosJunta.executeQuery("select* from JUNTA where fechaBaja=null");
+            ResultSet socioAdmin = sociosJunta.executeQuery("select* from JUNTA where fecha_fin is not null");
 
             while (socioAdmin.next()) {
 
                 Socio socio= socios.get(socioAdmin.getInt("codigoSocio"));
                 Cargo cargo= cargos.get(socioAdmin.getInt("codigoCargo"));
                Junta nuevo = new Junta(socio,cargo,socioAdmin.getString("fechaInicio"),socioAdmin.getString("fecha_Fin"),socioAdmin.getInt("numAjuntado"));
-                listaSocioMayorDeEdad.get(socioAdmin.getInt("codigoSocio")).setCargo(cargos.get("codigoCargo"));
-                cargos.get("codigoCargo").setSocio(socios.get("codigoSocio"));
+//                listaSocioMayorDeEdad.get(socioAdmin.getInt("codigoSocio")).setCargo(cargos.get("codigoCargo"));
+//                cargos.get("codigoCargo").setSocio(socios.get("codigoSocio"));
+                listaSociosJunta.put(socioAdmin.getInt("codigoSocio"),nuevo);
             }
         } catch (SQLException e) {
             e.printStackTrace();

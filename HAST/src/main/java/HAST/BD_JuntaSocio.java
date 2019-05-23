@@ -8,34 +8,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static HAST.AccionesBD.listaSociosJunta;
 import static HAST.AccionesBD.socios;
 
 public class BD_JuntaSocio {
     public JPanel panel1;
     private JTable tabla;
-    private JComboBox comboBox1;
 
 
-    public BD_JuntaSocio() {
-        List<Junta> juntas =new ArrayList<>();
-        juntas.addAll(AccionesBD.listaSociosJunta.values());
-
-
-        /// apartir de aqui es lo que tenias cambialo y dejalo como actividades
-        tabla.setModel(new ModeloTablaJunta(AccionesBD.MapMAyoresDeEdad, AccionesBD.cargos));
-
-        tabla.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                super.componentResized(e);
-            }
-        });
+    public JPanel getPanel1() {
+        return panel1;
     }
 
+    public BD_JuntaSocio() {
+
+      //  tabla.setModel(new ModeloTablaJunta(AccionesBD.MapMAyoresDeEdad, AccionesBD.cargos));
+        AccionesBD.TodosLosSocios();
+        AccionesBD.RellenarListaCargos();
+        AccionesBD.RellenarListaJunta();
+        tabla.setModel(new ModeloTablaJunta());
 
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code
+
+
 
     }
 
