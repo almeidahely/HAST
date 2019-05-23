@@ -27,6 +27,7 @@ public class CDA_AnadirSocios {
     private JButton F5;
     private JButton buttonCancelarAddSocio;
     private JLabel labelError;
+    private JLabel labelPerfil;
 
     static List<Socio> litaSocios = new ArrayList<>();
 
@@ -59,7 +60,7 @@ public class CDA_AnadirSocios {
             public void actionPerformed(ActionEvent e) {
 
 
-                // Hely --------------------------------------------
+                //  --------------------------------------------
 
 
                 try {
