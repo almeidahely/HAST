@@ -15,9 +15,8 @@ public class AccionesBD {
     static Map<Integer, Socio> socios = new HashMap<>();
     static Map<Integer, Cargo> cargos = new HashMap<>();
     static Map<Integer, Socio> MapMAyoresDeEdad = new HashMap<>();
-
     static List<String> nombreUsuarioConectado = new ArrayList<>();
-
+    static Map<Integer,Junta> listaSociosJunta = new HashMap<>();
 
     public static List<Socio> getListaSocioMayorDeEdad() {
         return listaSocioMayorDeEdad;
@@ -278,17 +277,41 @@ public class AccionesBD {
 
     }
 
+    //
     static void RellenarListaCargos() {
         Connection conexion = BD.getConn();
         try {
             Statement todosCargo = conexion.createStatement();
             ResultSet resultCargo = todosCargo.executeQuery("select * from Cargo");
-
-            Cargo nuevoCargo = new Cargo(resultCargo.getInt("codigoCargo"), resultCargo.getString("nombreCargo"));
-            cargos.put(resultCargo.getInt("codigoCargo"), nuevoCargo);
+            while (resultCargo.next()) {
+                Cargo nuevoCargo = new Cargo(resultCargo.getInt("codigoCargo"), resultCargo.getString("nombreCargo"));
+                cargos.put(resultCargo.getInt("codigoCargo"), nuevoCargo);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    static void RellenarListaJunta() {
+        Connection conexion = BD.getConn();
+        try {
+            Statement sociosJunta = conexion.createStatement();
+            ResultSet socioAdmin = sociosJunta.executeQuery("select* from JUNTA where fecha_fin is not null");
+
+            while (socioAdmin.next()) {
+
+                Socio socio= socios.get(socioAdmin.getInt("codigoSocio"));
+                Cargo cargo= cargos.get(socioAdmin.getInt("codigoCargo"));
+               Junta nuevo = new Junta(socio,cargo,socioAdmin.getString("fechaInicio"),socioAdmin.getString("fecha_Fin"),socioAdmin.getInt("numAjuntado"));
+//                listaSocioMayorDeEdad.get(socioAdmin.getInt("codigoSocio")).setCargo(cargos.get("codigoCargo"));
+//                cargos.get("codigoCargo").setSocio(socios.get("codigoSocio"));
+                listaSociosJunta.put(socioAdmin.getInt("codigoSocio"),nuevo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

@@ -20,7 +20,7 @@ public class Socio {
      List<Socio> listaMenoresACargo = new ArrayList<>();
     List<Actividad> listaActividadesOrganizadas = new ArrayList<>();
     List<Actividad> ActividadesParticipante = new ArrayList<>();
-
+    private Cargo cargo;
 
     public Socio(int codigoSocio, String DNI, String telefono, String nombre, String apellido, String fechaNacimiento, String email, Socio codigoResponsable, String fechaAlta, String fechaBaja) {
 
@@ -104,5 +104,9 @@ public class Socio {
 
     public void setCodigoResponsable(Socio codigoResponsable) {
         this.codigoResponsable = codigoResponsable;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 }
