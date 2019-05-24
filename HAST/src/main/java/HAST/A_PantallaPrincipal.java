@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class A_PantallaPrincipal {
@@ -12,7 +13,7 @@ public class A_PantallaPrincipal {
     static int socioUsuario;
 
     private JPanel Principal;
-    private JTextField textNombreUsuario;
+    public JTextField textNombreUsuario;
     private JButton aceptarButton;
     private JButton buttonCabeceraPrincipal;
     private JPanel Fondo;
@@ -22,7 +23,8 @@ public class A_PantallaPrincipal {
     private JLabel textError;
     private JButton calendarioButton;
 
-    static List<String> usuarioConectado = new ArrayList<>();
+    static List<Integer> usuarioConectado = new ArrayList<>();
+
 
 
     public JTextField getTextNombreUsuario() {
@@ -77,6 +79,10 @@ public class A_PantallaPrincipal {
                 //Nombre del usuario Logueado / conectado.
                 AccionesBD.usuarioConectado(codigoUsuario);
 
+                int usuarioActual = Integer.parseInt(textNombreUsuario.getText());
+                usuarioConectado = Collections.singletonList(usuarioActual);
+
+
 
                 if (valor != 0) {
 
@@ -96,7 +102,6 @@ public class A_PantallaPrincipal {
 
                     }
                     socioUsuario = codigoUsuario;
-
                     passwordField1passwordField1.setText("");
                     textNombreUsuario.setText("");
 

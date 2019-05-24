@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class BD {
 
     public static Connection getConn() {
-        if(conn == null) {
+        if(conn == null ) {
             conexion();
         }
 

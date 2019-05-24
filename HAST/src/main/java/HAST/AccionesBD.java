@@ -141,6 +141,10 @@ public class AccionesBD {
     }
 
 
+
+
+
+
     //Lista Actividades
 
     static void listarActividades() {
@@ -246,22 +250,20 @@ public class AccionesBD {
         int respuesta = JOptionPane.showConfirmDialog(null, "Seguro desea eliminar a " + nombre);
         if (respuesta == JOptionPane.YES_OPTION) {
 
-            String sql = "Delete from ACTIVIDAD" + "where nombre =?";
+            String sql = "Delete from tipoActividad where nombre =?";
             try {
                 PreparedStatement elimin = conexion.prepareStatement(sql);
                 elimin.setString(1, nombre);
                 //elimin.executeUpdate();
 
-                if (elimin.executeUpdate() > 0) {
+                 elimin.executeUpdate() ;
                     JOptionPane.showMessageDialog(null, "Se ha eliminado!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se ha podido  eliminar.\n" +
-                            "Intentelo nuevamente.");
 
 
-                }
+
+
                 elimin.close();
-                conexion.close();
+
 
             } catch (SQLException e) {
 
