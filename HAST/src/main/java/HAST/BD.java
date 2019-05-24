@@ -34,6 +34,7 @@ public class BD {
             //El de abajo Hely
             conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.56.101:1521:xe", "egibide", "egibide");
 
+            // 
             System.out.println("INFO: Conexión abierta");
 
         } catch (SQLException ex) {
