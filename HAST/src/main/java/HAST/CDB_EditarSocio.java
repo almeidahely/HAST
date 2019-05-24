@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,11 +52,66 @@ public class CDB_EditarSocio {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                Connection conexion = BD.getConn();
+                int usuario = comboBox1.getSelectedIndex();
+                int mayor = 0;
+                for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
+                    if (socio.getCodigoSocio() == todoSocio.get(usuario).getCodigoSocio()) {
+                        mayor = 1;
+                    }
+                }
+                try {
+                    if (mayor == 1) {
+                        PreparedStatement editar = conexion.prepareStatement("UPDATE SOCIO set nombre=?,apellido=?,DNI=?,telefono=?,email=?,fechaNacimiento=? where codigoSocio=?");
+                        editar.setString(1, textNombre.getText());
+                        editar.setString(2, textApellido.getText());
+                        editar.setString(3, textDNI.getText());
+                        editar.setString(4, textTelefono.getText());
+                        editar.setString(5, textEmail.getText());
+                        editar.setDate(6, Date.valueOf((String.format(textFechaNaci.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
+                        editar.setInt(7, todoSocio.get(usuario).getCodigoSocio());
+                        System.out.println("28");
+                        editar.executeLargeUpdate();
+                        editar.close();
+                        System.out.println("29");
+                    }
+
+                    else {
+                        PreparedStatement editarMenor = conexion.prepareStatement("UPDATE SOCIO set nombre=?,apellido=?,DNI=?,telefono=?,email=?,fechaNacimiento=?,codigoResponsable=? where codigoSocio=?");
+                        editarMenor.setString(1, textNombre.getText());
+                        editarMenor.setString(2, textApellido.getText());
+                        editarMenor.setString(3, textDNI.getText());
+                        editarMenor.setString(4, textTelefono.getText());
+                        editarMenor.setString(5, textEmail.getText());
+                        editarMenor.setDate(6,  Date.valueOf((String.format(textFechaNaci.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
+                        editarMenor.setInt(7,todoSocio.get(selectorResponsable.getSelectedIndex()).getCodigoSocio());
+                        editarMenor.setInt(8, todoSocio.get(usuario).getCodigoSocio());
+                        editarMenor.executeLargeUpdate();
+                        editarMenor.close();
+                    }
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+
             }
         });
         eliminarSocioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int usuario = comboBox1.getSelectedIndex();
+                int mayor = 0;
+                for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
+                    if (socio.getCodigoSocio() == todoSocio.get(usuario).getCodigoSocio()) {
+                        mayor = 1;
+                    }
+                }
+                Connection conexion = BD.getConn();
+
+
+
+
 
             }
         });
@@ -73,18 +130,16 @@ public class CDB_EditarSocio {
                 textFechaNaci.setText(todoSocio.get(usuario).getFechaNacimiento());
                 labelFechaAlta.setText(todoSocio.get(usuario).getFechaAlta());
                 int mayor = 0;
+                for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
+                    if (socio.getCodigoSocio() == todoSocio.get(usuario).getCodigoSocio()) {
+                        mayor = 1;
+                    }
+                }
+
+
+                if (mayor == 0) {
                     for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                        if (socio.getCodigoSocio() == todoSocio.get(usuario).getCodigoSocio()) {
-                            mayor = 1;
-                        }
-                        }
-
-
-
-
-                if(mayor==0){
-                    for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-                        selectorResponsable.addItem(socio.getCodigoSocio()+"- "+ socio.getNombre());
+                        selectorResponsable.addItem(socio.getCodigoSocio() + "- " + socio.getNombre());
                     }
                 }
             }

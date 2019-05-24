@@ -62,6 +62,7 @@
           <focusCycleRoot value="true"/>
           <focusable value="false"/>
           <foreground color="-8865011"/>
+          <name value="Calendario"/>
           <opaque value="true"/>
         </properties>
         <clientProperties>
