@@ -1,10 +1,14 @@
 package HAST;
 
+import com.github.lgooddatepicker.components.DatePicker;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,7 @@ public class CDB_EditarSocio {
     private JButton eliminarSocioButton;
     private JLabel labelFechaAlta;
     private JButton actualizarButton;
+    private DatePicker PickerFechaNac;
     private JButton buttonCancelar;
     private JButton buttonGuardar;
     private JButton buttonEliminar;
@@ -68,27 +73,58 @@ public class CDB_EditarSocio {
                         editar.setString(3, textDNI.getText());
                         editar.setString(4, textTelefono.getText());
                         editar.setString(5, textEmail.getText());
-                        editar.setDate(6, Date.valueOf((String.format(textFechaNaci.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
+
+
+                        editar.setDate(6, Date.valueOf(PickerFechaNac.getDate()));
+
+                        //editar.setDate(6, Date.valueOf((String.format(textFechaNaci.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
+
+
                         editar.setInt(7, todoSocio.get(usuario).getCodigoSocio());
                         System.out.println("28");
-                        editar.executeLargeUpdate();
-                        editar.close();
-                        System.out.println("29");
-                    }
 
-                    else {
+                        editar.executeLargeUpdate();
+
+
+                        editar.close();
+
+
+
+                        System.out.println("29");
+                    } else {
                         PreparedStatement editarMenor = conexion.prepareStatement("UPDATE SOCIO set nombre=?,apellido=?,DNI=?,telefono=?,email=?,fechaNacimiento=?,codigoResponsable=? where codigoSocio=?");
                         editarMenor.setString(1, textNombre.getText());
                         editarMenor.setString(2, textApellido.getText());
                         editarMenor.setString(3, textDNI.getText());
                         editarMenor.setString(4, textTelefono.getText());
                         editarMenor.setString(5, textEmail.getText());
-                        editarMenor.setDate(6,  Date.valueOf((String.format(textFechaNaci.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
-                        editarMenor.setInt(7,todoSocio.get(selectorResponsable.getSelectedIndex()).getCodigoSocio());
+
+                        //PickerFechaNac.setDate(LocalDate.parse(todoSocio.get(usuario).getFechaNacimiento(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
+
+
+                        //editarMenor.setDate(6,Date.valueOf(PickerFechaNac.getDate()));
+
+                        editarMenor.setDate(6, Date.valueOf((String.format(textFechaNaci.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
+
+
+                        editarMenor.setInt(7, todoSocio.get(selectorResponsable.getSelectedIndex()).getCodigoSocio());
                         editarMenor.setInt(8, todoSocio.get(usuario).getCodigoSocio());
                         editarMenor.executeLargeUpdate();
                         editarMenor.close();
                     }
+
+
+                    // - - - - -
+
+
+
+
+
+
+
+                    //------------------
+
+
 
                 } catch (SQLException ex) {
                     ex.printStackTrace();
@@ -110,9 +146,6 @@ public class CDB_EditarSocio {
                 Connection conexion = BD.getConn();
 
 
-
-
-
             }
         });
 
@@ -127,7 +160,13 @@ public class CDB_EditarSocio {
                 textDNI.setText(todoSocio.get(usuario).getDNI());
                 textEmail.setText(todoSocio.get(usuario).getEmail());
                 textTelefono.setText(todoSocio.get(usuario).getTelefono());
-                textFechaNaci.setText(todoSocio.get(usuario).getFechaNacimiento());
+
+                PickerFechaNac.setDate(LocalDate.parse(todoSocio.get(usuario).getFechaNacimiento(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
+
+
+                //textFechaNaci.setText(todoSocio.get(usuario).getFechaNacimiento());
+
+
                 labelFechaAlta.setText(todoSocio.get(usuario).getFechaAlta());
                 int mayor = 0;
                 for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
@@ -142,7 +181,12 @@ public class CDB_EditarSocio {
                         selectorResponsable.addItem(socio.getCodigoSocio() + "- " + socio.getNombre());
                     }
                 }
+
+
+
             }
+
+
         });
 
     }
