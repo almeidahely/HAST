@@ -71,40 +71,8 @@ public class CA_PanelActividadesAdm {
                     comboBox1nomActiv.addItem(nuevoElemento);
                     comboBox1nomActiv.repaint();
 
-                    // ------------------------------
 
 
-                    try {
-                        Connection conexion = BD.getConn();
-                        String insertarTipoActividad = "INSERT INTO tipoActividad(nombre) values(?)";
-
-                        PreparedStatement pstmt = null;
-
-                        String nombre = textNombre.getText();
-
-
-                        //
-
-
-                        //fechaAlta
-
-
-                        pstmt = conexion.prepareStatement(insertarTipoActividad);
-
-                        pstmt.setString(1, nombre);
-
-                        //fecha de alta
-
-
-                        pstmt.executeUpdate();
-
-
-                    } catch (SQLException ex) {
-                        //System.out.println("Error al insertar el dato");
-                    }
-
-
-                    // -------------------------------------
 
 
                     JOptionPane.showMessageDialog(null, "Se ha anadido !!!!");
