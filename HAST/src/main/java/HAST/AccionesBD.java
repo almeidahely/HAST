@@ -153,7 +153,7 @@ public class AccionesBD {
 
         try {
             Statement actividad = conexion.createStatement();
-            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD ");
+            ResultSet activas = actividad.executeQuery("select * from ACTIVIDAD");
 
             while (activas.next()) {
                 int organizador = activas.getInt("organizador");
