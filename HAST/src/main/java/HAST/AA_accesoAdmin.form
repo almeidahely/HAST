@@ -37,6 +37,16 @@
               <verticalTextPosition value="3"/>
             </properties>
           </component>
+          <component id="15209" class="javax.swing.JButton" binding="botonSalirLogin" custom-create="true">
+            <constraints/>
+            <properties>
+              <borderPainted value="false"/>
+              <font name="Avenir Next Condensed" size="18" style="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="SALIR"/>
+              <verticalTextPosition value="3"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="ce71d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

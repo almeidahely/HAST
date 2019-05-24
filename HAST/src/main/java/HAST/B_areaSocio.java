@@ -61,7 +61,6 @@ public class B_areaSocio extends Container {
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
-                AccionesBD.listarActividades();
 
                 for (Actividad actividad : AccionesBD.listaActividades) {
                     //comboBox1.addItem(actividad.getCodigoActividad());
@@ -93,11 +92,20 @@ public class B_areaSocio extends Container {
         SalirButtonSocios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+                //si es administrador
                 frame.dispose();
+
+                //si soy apenas socio
             }
         });
     }
 
+
+    public JButton getSalirButtonSocios() {
+        return SalirButtonSocios;
+    }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here

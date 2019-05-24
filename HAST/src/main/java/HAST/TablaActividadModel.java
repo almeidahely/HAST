@@ -15,8 +15,7 @@ public class TablaActividadModel extends AbstractTableModel {
 
 
     public TablaActividadModel() {
-      AccionesBD.listarActividades();
-
+        System.out.println(AccionesBD.listaActividades.size());
     }
 
 
@@ -42,7 +41,7 @@ public class TablaActividadModel extends AbstractTableModel {
             case 2:
                 return a.getPrecio();
             case 3:
-                return a.getOrganizador();
+                return a.getOrganizador().getCodigoSocio();
 
             case 4:
                 return a.getDificultad();

@@ -15,12 +15,12 @@ public class A_PantallaPrincipal {
     private JPanel Principal;
     public JTextField textNombreUsuario;
     private JButton aceptarButton;
-    private JComboBox lista;
     private JButton buttonCabeceraPrincipal;
     private JPanel Fondo;
     private JPasswordField passwordField1passwordField1;
     private JButton iconUser;
     private JButton iconPassword;
+    private JLabel textError;
     private JButton calendarioButton;
 
     static List<Integer> usuarioConectado = new ArrayList<>();
@@ -39,36 +39,45 @@ public class A_PantallaPrincipal {
 
 
 //Listado de socio//
-        AccionesBD.TodosLosSocios();
         AccionesBD.SeleccionarMayoresDe18();
         AccionesBD.listarActividades();
-
-        List<Socio> todosLosSocios = new ArrayList<>(AccionesBD.socios.values());
-       // for (Socio socio : AccionesBD.listaSocioMayorDeEdad) {
-         //  System.out.println(socio.getNombre()+".");
-         //  lista.addItem(socio.getNombre());
-      // }//
-        for (Socio socio : todosLosSocios) {
-            lista.addItem(socio.getNombre());
-        }
-       // for (Actividad actividad : AccionesBD.listaActividades) {
-          //  lista.addItem(actividad.getOrganizador().getNombre()+actividad.getCodigoActividad());
-       // }
-
+        AccionesBD.TodosLosSocios();
+        System.out.println(AccionesBD.listaSocioMayorDeEdad.size());
+        System.out.println(AccionesBD.listaActividades.size());
 
 
         //Listado de Socio//
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int codigoUsuario = Integer.parseInt(textNombreUsuario.getText());
-                int valor = AccionesBD.ComprobarContraseña(codigoUsuario, String.valueOf(passwordField1passwordField1.getPassword()));
+
+
+                int codigoUsuario = 0;
+                int valor = 0;
+
+                try {
+                    codigoUsuario = Integer.parseInt(textNombreUsuario.getText());
+                    valor = 0;
+
+                } catch (NumberFormatException ex) {
+                    //textError.setText("Código de usuario incorrecto");
+                }
+
+                try {
+                    valor = AccionesBD.ComprobarContraseña(codigoUsuario, String.valueOf(passwordField1passwordField1.getPassword()));
+                } catch (Exception ex) {
+                    textError.setVisible(true);
+                } finally {
+
+                }
+
+                if (valor == 1 || valor == 2) {
+                    textError.setVisible(false);
+                }
 
 
                 //Nombre del usuario Logueado / conectado.
                 AccionesBD.usuarioConectado(codigoUsuario);
-
-
 
                 int usuarioActual = Integer.parseInt(textNombreUsuario.getText());
                 usuarioConectado = Collections.singletonList(usuarioActual);
@@ -86,7 +95,7 @@ public class A_PantallaPrincipal {
                         frame.setVisible(true);
                     } else {
                         JFrame frame = new JFrame("Administrador");
-                        frame.setContentPane(new AA_accesoAdmin().getPanel());
+                        frame.setContentPane(new AA_accesoAdmin(frame).getPanel());
                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         frame.pack();
                         frame.setVisible(true);
@@ -128,6 +137,10 @@ public class A_PantallaPrincipal {
         aceptarButton = new JButton(new ImageIcon("sign-in.png"));
 
 
+    }
+
+    public static int getSocioUsuario() {
+        return socioUsuario;
     }
 }
 

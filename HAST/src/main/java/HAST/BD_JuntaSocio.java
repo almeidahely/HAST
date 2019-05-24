@@ -3,9 +3,12 @@ package HAST;
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import static HAST.AccionesBD.listaSociosJunta;
 import static HAST.AccionesBD.socios;
 
 public class BD_JuntaSocio {
@@ -13,30 +16,21 @@ public class BD_JuntaSocio {
     private JTable tabla;
 
 
+    public JPanel getPanel1() {
+        return panel1;
+    }
 
     public BD_JuntaSocio() {
 
-        tabla.setModel(new ModeloTablaJunta(AccionesBD.socios,AccionesBD.cargos));
-
-        tabla.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                super.componentResized(e);
-            }
-        });
-    }
+      //  tabla.setModel(new ModeloTablaJunta(AccionesBD.MapMAyoresDeEdad, AccionesBD.cargos));
+        AccionesBD.TodosLosSocios();
+        AccionesBD.RellenarListaCargos();
+        AccionesBD.RellenarListaJunta();
+        tabla.setModel(new ModeloTablaJunta());
 
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("BD_JuntaSocio");
-        frame.setContentPane(new BD_JuntaSocio().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code
+
 
     }
 

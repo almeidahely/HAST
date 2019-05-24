@@ -14,88 +14,154 @@ public class CDA_AnadirSocios {
     private JPanel panel;
     private JComboBox selectorPerfil;
     private JComboBox selectorResponsable;
-    private JButton buttonCancelar;
-    private JButton buttonAnadir;
+    //private JButton buttonCancelar;
+    private JButton buttonAnadirSocioCDA;
     private JTextField textDNI;
     private JTextField textNombre;
     private JTextField textApellidos;
     private JTextField textFechaNacimiento;
     private JTextField textTelefono;
     private JTextField textEmail;
-   static  DatePicker selectorFecha;
+    private DatePicker selectorFecha;
+    private JLabel labelResponsable;
+    private JButton F5;
+    private JButton buttonCancelarAddSocio;
+    private JLabel labelError;
+    private JLabel labelPerfil;
 
     static List<Socio> litaSocios = new ArrayList<>();
 
 
     public CDA_AnadirSocios(JFrame frame) {
-        buttonCancelar.addActionListener(new ActionListener() {
+
+        labelError.setVisible(false);
+
+
+        if (selectorPerfil.getSelectedItem().toString().equalsIgnoreCase("administrador")) {
+            labelResponsable.setEnabled(false);
+            selectorResponsable.setEnabled(false);
+        } else {
+            labelResponsable.setEnabled(true);
+            selectorResponsable.setEnabled(true);
+        }
+
+
+        buttonCancelarAddSocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
 
             }
         });
-        buttonAnadir.addActionListener(new ActionListener() {
+
+
+        buttonAnadirSocioCDA.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
 
-                AccionesBD.añadirSocioNuevo(textNombre.getText(),textApellidos.getText(),textDNI.getText(),textTelefono.getText(),textEmail.getText(),selectorFecha.getDateStringOrEmptyString());
-                //anyadirSociosBd();
+                //  --------------------------------------------
 
-                textNombre.setText("");
-                textApellidos.setText("");
-                textTelefono.setText("");
-                textEmail.setText("");
-                textFechaNacimiento.setText("");
+
+                try {
+                    Connection conexion = BD.getConn();
+                    String insertarUsuario = "INSERT INTO SOCIO(nombre,apellido,DNI,telefono,email,perfil,fechaAlta,fechaNacimiento) values(?,?,?,?,?,?,?,?)";
+
+                    PreparedStatement pstmt = null;
+
+                    String nombre = textNombre.getText();
+                    String apellido = textApellidos.getText();
+                    String DNI = textDNI.getText();
+                    // CODIGO SOCIO. no hay que añadir el codigoSocio la base de datos lo puede autoincrementar utilizando un trigger
+                    String telefono = textTelefono.getText();
+                    String email = textEmail.getText();
+                    String perfil = (String) selectorPerfil.getSelectedItem();
+
+                    //
+
+
+                    //fechaAlta
+                    java.util.Date date = new java.util.Date();
+                    long t = date.getTime();
+                    java.sql.Date sqlDate = new java.sql.Date(t);
+
+
+                    pstmt = conexion.prepareStatement(insertarUsuario);
+
+                    pstmt.setString(1, nombre);
+                    pstmt.setString(2, apellido);
+                    pstmt.setString(3, DNI);
+                    pstmt.setString(4, telefono);
+                    pstmt.setString(5, email);
+                    pstmt.setString(6, perfil);
+
+                    //fecha de alta
+                    pstmt.setDate(7, sqlDate);
+
+
+                    if (selectorFecha.getDate() == null) {
+                        labelError.setText("Error, en la fecha de nacimiento");
+                        labelError.setVisible(true);
+                    } else {
+                        labelError.setVisible(false);
+                        pstmt.setDate(8, Date.valueOf(selectorFecha.getDate()));
+
+
+                    }
+
+
+                    pstmt.executeUpdate();
+                    //System.out.println("Socio añadido");
+
+
+                    labelError.setText("Usuario añadido correctamente");
+                    labelError.setVisible(true);
+
+                    textNombre.setText("");
+                    textApellidos.setText("");
+                    textDNI.setText("");
+                    textTelefono.setText("");
+                    textEmail.setText("");
+                    LocalDate fechaHoy = LocalDate.now();
+                    selectorFecha.setDate(fechaHoy);
+
+
+                } catch (SQLException ex) {
+                    labelError.setText("Error, rellena los campos correctamente.");
+                    labelError.setVisible(true);
+                    //System.out.println("Error al insertar el dato");
+                }
+
+
+                // -----------------------------------------
 
 
             }
         });
 
 
+        //botón para actualizar perfil
+
+        F5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                labelError.setVisible(false);
+
+                if (selectorPerfil.getSelectedItem().toString().equalsIgnoreCase("administrador")) {
+                    labelResponsable.setEnabled(false);
+                    selectorResponsable.setEnabled(false);
+                } else {
+                    labelResponsable.setEnabled(true);
+                    selectorResponsable.setEnabled(true);
+                }
+            }
+        });
     }
 
-/*  hely trabajando en esto.
-
-private void anyadirSociosBd() {
-        Connection conexion = BD.getConn();
-
-        litaSocios.clear();
-
-        try {
-            PreparedStatement Pstmt = conexion.prepareStatement("insert into SOCIO (NOMBRE,APELLIDO,DNI,TELEFONO,EMAIL,PERFIL,FECHAALTA,FECHANACIMIENTO) VALUES(?,?,?,?,?,?,?,?)");
-
-
-            //selector Fecha Alta
-            LocalDate fecha = LocalDate.now();
-
-
-            Pstmt.setString(1, textNombre.getText());
-            Pstmt.setString(2, textApellidos.getText());
-            Pstmt.setString(3, textDNI.getText());
-            Pstmt.setString(4, textTelefono.getText());
-            Pstmt.setString(5, textEmail.getText());
-            Pstmt.setString(6, String.valueOf(selectorPerfil.getSelectedItem()));
-            Pstmt.setString(7, fecha.toString());
-            Pstmt.setString(8, textFechaNacimiento.getText());
-
-            int filas = Pstmt.executeUpdate();
-            System.out.println("Filas afectadas: " + filas);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     public JPanel getPanel() {
         return panel;
-    }
-
-
-    static void anyadirSocio() {
-
-
     }
 
 
@@ -120,19 +186,19 @@ private void anyadirSociosBd() {
     }
 
     public JButton getButtonCancelar() {
-        return buttonCancelar;
+        return buttonCancelarAddSocio;
     }
 
     public void setButtonCancelar(JButton buttonCancelar) {
-        this.buttonCancelar = buttonCancelar;
+        this.buttonCancelarAddSocio = buttonCancelar;
     }
 
-    public JButton getButtonAnadir() {
-        return buttonAnadir;
+    public JButton getButtonAnadirSocioCDA() {
+        return buttonAnadirSocioCDA;
     }
 
-    public void setButtonAnadir(JButton buttonAnadir) {
-        this.buttonAnadir = buttonAnadir;
+    public void setButtonAnadirSocioCDA(JButton buttonAnadirSocioCDA) {
+        this.buttonAnadirSocioCDA = buttonAnadirSocioCDA;
     }
 
     public JTextField getTextDNI() {
@@ -181,5 +247,13 @@ private void anyadirSociosBd() {
 
     public void setTextEmail(JTextField textEmail) {
         this.textEmail = textEmail;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        F5 = new JButton((new ImageIcon("update.png")));
+        buttonAnadirSocioCDA = new JButton((new ImageIcon("plus.png")));
+        buttonCancelarAddSocio = new JButton((new ImageIcon("exit.png")));
+
     }
 }

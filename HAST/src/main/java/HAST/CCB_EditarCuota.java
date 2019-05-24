@@ -12,6 +12,7 @@ public class CCB_EditarCuota {
     private JButton buttonSubirCuota;
     private JButton buttonBajarCuota;
     private JButton buttonCancelarCuotaAdm;
+    private JLabel textPrecioActual;
 
     public CCB_EditarCuota(JFrame frame) {
         buttonCancelarCuotaAdm.addActionListener(new ActionListener() {
