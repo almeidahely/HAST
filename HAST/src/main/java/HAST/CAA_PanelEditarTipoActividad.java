@@ -17,10 +17,27 @@ public class CAA_PanelEditarTipoActividad {
     private List<String> actividades = new ArrayList<>();
 
     public CAA_PanelEditarTipoActividad(JFrame frame) {
+        selectorActividad.removeAllItems();
+        Connection conexion = BD.getConn();
+        try {
+            Statement sttipo = conexion.createStatement();
+
+            ResultSet rs = sttipo.executeQuery("Select*from ACTIVIDAD");
+            while (rs.next()) {
+                selectorActividad.addItem(rs.getString("tipo"));
+
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+
+        
         guardarButtonTipoActividad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
 
 
 
